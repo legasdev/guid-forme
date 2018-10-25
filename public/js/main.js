@@ -1,10 +1,9 @@
 var
-    aboutBlockInfoPos;
+    aboutBlockInfoPos,
+    scrollDownPage;
 
 $(document).ready( () => {
-   $('body').on('click', '.main-c-bottom', (e) => {
-       $('html, body').animate({scrollTop: $(window).innerHeight()}, 500); 
-    }); 
+   scrollDownPage();
 });
 
 
@@ -35,4 +34,11 @@ aboutBlockInfoPos = () => {
 			$(obj).addClass('bottom');
 		}
 	}
+}
+
+// Скроллинг по стрелочке
+scrollDownPage = () => {
+    $('body').on('click', '.main-c-bottom', (e) => {
+       $('html, body').animate({scrollTop: $(window).innerHeight()}, 500); 
+    }); 
 }

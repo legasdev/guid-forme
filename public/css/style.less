@@ -562,6 +562,35 @@ body {
 							}
 						}
 					}
+                    
+                    // Управление слайдером
+                    .main-c-w-ui {
+                        display: flex;
+                        justify-content: space-around;
+                        position: absolute;
+                        right: 0;
+                        width: 35%;
+                        height: 1px;
+                        background-color: @bgColor;
+                        bottom: 30px;
+                        
+                        .main-c-w-ui-block {
+                            width: 15%;
+                            height: 6px;
+                            background-color: @bgColor;
+                            transform: scale3d(1,1,1) translate3d(0, -5px, 0);
+                            transition: transform .2s, background-color 1s;
+                            cursor: pointer;
+                            
+                            &.active {
+                               background-color: @orColor; 
+                            }
+                            
+                            &:hover {
+                                transform: scale3d(1,2,1) translate3d(0, -4px, 0);
+                            }
+                        }
+                    }
 				}
 			}
 		}

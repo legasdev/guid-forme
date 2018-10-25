@@ -10,7 +10,7 @@ let
 $(document).ready(() => {
 
 	// Запускаем главный слайдер
-	startSlider('.main-slides', '.main-s-slide', 6, 1);
+	startSlider('.main-slides', '.main-s-slide', 6, 1, '.main-c-w-ui');
 	// Запускаем главный слайдер 2
 	startSlider('.welcome-s-w-slides', '.welcome-s-w-s-slide', 6, 1, '.welcome-s-w-ui-baseline');
 	// Запускаем слайдер 
