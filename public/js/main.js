@@ -1,9 +1,20 @@
+var
+    aboutBlockInfoPos;
+
+$(document).ready( () => {
+   $('body').on('click', '.main-c-bottom', (e) => {
+       $('html, body').animate({scrollTop: $(window).innerHeight()}, 500); 
+    }); 
+});
+
+
 $(window).scroll( (e) => {
-	
-	console.log($(window).scrollTop());
-	console.log($('.about-w-i-wrapper').offset().top);
-	
-	let 
+	aboutBlockInfoPos();
+});
+
+// Отслеживаем положение блока about
+aboutBlockInfoPos = () => {
+    let 
 		obj = $('.about').find('.about-w-i-wrapper'),
 		checkObj = $('.about').find('.about-w-text');
 		
@@ -24,5 +35,4 @@ $(window).scroll( (e) => {
 			$(obj).addClass('bottom');
 		}
 	}
-	
-});
+}
