@@ -1,0 +1,1637 @@
+/*
+* 	Переменные
+* 	Начало
+*/
+
+// Основные цвета 
+@bgColor: #fcf6f2;
+@blackColor: #000;
+@orColor: #ff6636;
+
+// Толщина границ
+@wmBorder: 1px;
+@wdBorder: @wmBorder * 2;
+
+// Папка с картинками
+@imgSrc: '/img';
+
+// Блоки
+@main: main;
+@welcome: welcome;
+@reviews: reviews;
+
+/*
+* 	Переменные
+* 	Конец
+*/
+
+/*
+* 	Миксины
+* 	Начало
+*/
+
+// Переходы
+.transition(@prop: all; @time: 0.5s; @rest...) {
+	-webkit-transition: @prop @time @rest;
+	transition: @prop @time @rest;
+}
+
+// Расположение блока
+.blockPosition() {
+	@widthBlock: calc(100% - 140px);
+	
+	position: relative;
+	left: 140px;
+	width: @widthBlock;
+	
+	&:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: 0;
+		width: @wmBorder;
+		height: 85%;
+		background-color: @blackColor;
+	}
+	&:before {
+		content: " ";
+		display: block;
+		position: absolute;
+		bottom: 25%;
+		width: @wdBorder;
+		height: 10%;
+		background-color: @orColor;
+		z-index: 2;
+	}
+}
+
+/*
+* 	Миксины
+* 	Конец
+*/
+
+@font-face {
+	font-family: 'light';
+	src: url("/fonts/Montserrat-Light.ttf");
+}
+@font-face {
+	font-family: 'regular';
+	src: url("/fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+	font-family: 'semibold';
+	src: url("/fonts/Montserrat-SemiBold.ttf");
+}
+@font-face {
+	font-family: 'extrabold';
+	src: url("/fonts/Montserrat-ExtraBold.ttf");
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	content: ' ';
+	box-sizing: border-box;
+	font-family: light;
+	font-weight: 100;
+}
+
+body {
+	background-color: @bgColor;
+	overflow-x: hidden;
+	height: 2000px;
+}
+
+// Название блока
+.name-block {
+	margin: 0 0 0 15px;
+	padding: 35px 0;
+	font-size: 4rem;
+	
+	span {
+		position: relative;
+		color: @orColor;
+		
+		&:after {
+			content: " ";
+			display: block;
+			position: absolute;
+			left: -15px;
+			top: 0;
+			width: 85%;
+			height: @wmBorder;
+			background-color: @blackColor;
+		}
+	}
+	
+	&:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		height: 52px;
+		width: @wdBorder;
+		top: 10px;
+		left: 0;
+		background-color: @orColor;
+		z-index: 2;
+	}
+	&:before {
+		content: " ";
+		display: block;
+		position: absolute;
+		height: @wdBorder;
+		width: 25px;
+		top: 34px;
+		left: 0;
+		background-color: @orColor;
+		z-index: 2;
+	}
+}
+
+// Кнопка меню
+.menu-btn {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 140px;
+	height: 140px;
+	background-color: @bgColor;
+	cursor: pointer;
+	z-index: 1000;
+	
+	.menu-btn-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		width: 60%;
+		height: 50%;
+		
+		div {
+			width: 80%;
+			height: @wdBorder;
+			background-color: @orColor;
+		}
+	}
+}
+
+// Дизайн внизу
+.bottom-design {
+	position: absolute;
+	right: 140px;
+	width: 35%;
+	margin-top: 40px;
+	height: @wmBorder;
+	background-color: @blackColor;
+	
+	// Правые линии
+	.bottom-d-right {
+		position: absolute;
+		bottom: -60px;
+		right: 0;
+		width: @wmBorder;
+		height: 300px;
+		background-color: @blackColor;
+		
+		// Рыжие зарубки
+		&:after {
+			content: " ";
+			position: absolute;
+			width: 25px;
+			height: @wdBorder;
+			right: 0;
+			bottom: 60px;
+			background-color: @orColor;
+			z-index: 2;
+		}
+		&:before {
+			content: " ";
+			position: absolute;
+			width: @wdBorder;
+			height: 50px;
+			right: 0;
+			bottom: 35px;
+			background-color: @orColor;
+			z-index: 2;
+		}
+	}
+	
+	// Рыжие зарубки
+	&:after {
+		content: " ";
+		position: absolute;
+		height: 80px;
+		width: @wdBorder;
+		right: 0;
+		bottom: 120px;
+		background-color: @orColor;
+	}
+	&:before {
+		content: " ";
+		position: absolute;
+		height: @wdBorder;
+		width: 80px;
+		left: 40px;
+		top: -1px;
+		background-color: @orColor;
+	}
+}
+
+// Дизайн большой кнопки
+.style-big-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: 30px 0;
+	padding: 10px 30px;
+	cursor: pointer;
+	text-decoration: none;
+	.transition(background-color, .2s);
+	
+	p {
+		position: relative;
+		font-size: 3.5rem;
+		font-family: semibold;
+		color: @orColor;
+		.transition(color, .2s);
+	}
+	
+	&:hover {
+		background-color: @orColor;
+		
+		p {
+			color: @bgColor;
+		}
+		
+		&:after {
+			width: 100%;
+		}
+		&:before {
+			height: 125%;
+		}
+		
+		.style-big-btn-lines {
+			&:after {width: 100%;}
+			&:before {height: 125%;}
+		}
+	}
+	
+	// Линии справа черные
+	.style-big-btn-lines {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		
+		&:after {
+			content: " ";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 60%;
+			height: @wmBorder;
+			background-color: @blackColor;
+			.transition(width, .3s);
+		}
+		&:before {
+			content: " ";
+			position: absolute;
+			right: 0;
+			bottom: -25%;
+			width: @wmBorder;
+			height: 105%;
+			background-color: @blackColor;
+			.transition(height, .3s);
+		}
+		
+		.style-big-btn-orline-l {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			
+			&:after {
+				content: " ";
+				position: absolute;
+				width: @wdBorder;
+				height: 30px;
+				background-color: @orColor;
+				top: -15px;
+				z-index: 2;
+			}
+			&:before {
+				content: " ";
+				position: absolute;
+				width: 15px;
+				height: @wdBorder;
+				background-color: @orColor;
+				top: -@wmBorder;
+				z-index: 2;
+			}
+		}
+		
+		.style-big-btn-orline-r {
+			.style-big-btn-orline-l;
+			
+			&:after {
+				right: 0;
+				top: auto;
+				bottom: -15px;
+			}
+			&:before {
+				right: 0;
+				top: auto;
+				bottom: -@wmBorder;
+			}
+		}
+	}	
+	
+	// Линии слева черные
+	&:after {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 60%;
+		height: @wmBorder;
+		background-color: @blackColor;
+		.transition(width, .3s);
+	}
+	&:before {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: -25%;
+		width: @wmBorder;
+		height: 105%;
+		background-color: @blackColor;
+		.transition(height, .3s);
+	}
+	
+}
+
+// Дизайн маленькой кнопки
+.style-small-btn {
+    .style-big-btn();
+    
+    p {
+		font-size: 1.3rem;
+		color: @blackColor;
+	}
+}
+
+// Первый экран
+.@{main} {
+	display: flex;
+	justify-content: space-between;
+	height: 100vh;
+	width: 100%;
+	//background-image: url("@{imgSrc}/main-img.jpg");
+	cursor: default;
+	
+	// Слайдер
+	.main-slides {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		
+		.main-s-slide {
+			position: absolute;
+			background-position: center;
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+			background-size: cover;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			.transition(opacity, 1s);
+			
+			&.active {
+				opacity: 1;
+			}
+		}
+	}
+
+	// Левый блок
+	.@{main}-left {
+		width: 140px;
+		z-index: 1;
+	}
+
+	// Центр
+	.@{main}-center {
+		@widthBlock: calc(100% - 280px);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		width: @widthBlock;
+		z-index: 1;
+		
+		// блок с надписями
+		.@{main}-c-top {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 88%;
+			
+			.@{main}-c-wrapper {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				height: 90%;
+				color: #fff;
+
+				// Линии вокруг центра
+				.@{main}-c-w-line {
+					width: @wmBorder;
+					height: 100%;
+					background-color: @bgColor;
+
+					&:before, &:after {
+						content: " ";
+						position: absolute;
+						width: @wdBorder;
+						height: 7%;
+						background-color: @orColor;
+					}
+
+					&.left:before, &.right:before {
+						top: 10%;
+					}
+
+					&.left:after, &.right:after {
+						bottom: 22%;
+					}
+
+					&.right:before, &.right:after {
+						transform: translate3d(-@wmBorder, 0, 0);
+					}
+				}
+				// Блок с надписями
+				.@{main}-c-w-block {
+					display: flex;
+					justify-content: space-between;
+					position: relative;
+					width: 100%;
+					height: 100%;
+					font-size: 2rem;
+					
+					// Приветствие
+					.@{main}-c-w-welcome {
+						position: relative;
+						height: 6rem;
+						top: 62%;
+						padding-left: 1rem;
+						text-transform: uppercase;
+						
+						// Развилка цветная
+						&:before {
+							content: " ";
+							display: block;
+							position: absolute;
+							width: @wdBorder;
+							height: 2em;
+							left: -@wmBorder;
+							bottom: -2.8rem;
+							z-index: 2;
+							background-color: @orColor;
+						}
+						&:after {
+							content: " ";
+							display: block;
+							position: absolute;
+							width: 1em;
+							height: @wdBorder;
+							left: -@wmBorder;
+							bottom: -1rem;
+							z-index: 2;
+							background-color: @orColor;
+						}
+						
+						// Текст приветствия
+						p {
+							line-height: 1em;
+						}
+						& p:last-child {
+							position: relative;
+							font-size: 2em;
+							margin-left: .5em;
+
+							&:after {
+								content: " ";
+								position: absolute;
+								height: @wmBorder;
+								bottom: -1rem;
+								width: 85%;
+								background-color: #fff;
+								left: -.75em;
+							}
+						}
+					}
+					
+					// Информация
+					.@{main}-c-w-info {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						align-items: flex-end;
+						position: absolute;
+						height: fit-content;
+						right: 0;
+						top: 12%;
+						padding-right: 1rem;
+						
+						p:first-child {
+							margin-bottom: 2rem;
+							
+							&:after {
+								content: " ";
+								display: block;
+								position: absolute;
+								width: 50%;
+								height: @wmBorder;
+								background-color: @bgColor;
+								top: 38%;
+								right: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		// блок вниз
+		.@{main}-c-bottom {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 12%;
+			background-color: @bgColor;
+			cursor: pointer;
+			
+			.@{main}-c-b-arrows {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				height: 65%;
+				width: 30px;
+				
+				.@{main}-c-b-arrow {
+					position: relative;
+					height: 30%;
+					width: 30px;
+					transform: translate3d(0, 0, 0);
+					
+					div {
+						position: absolute;
+						width: 100%;
+						height: 3px;
+						background-color: @blackColor;	
+					}
+					
+					div:first-child {
+						right: 10px;
+						transform: rotate(45deg);
+					}
+					div:last-child {
+						left: 10px;
+						transform: rotate(-45deg);
+						background-color: @orColor;	
+					}
+				}
+				
+				.@{main}-c-b-arrow:nth-child(1) {
+					transform: scale(.4);
+					.transition(transform, .2s, ease, .2s);
+				}
+				.@{main}-c-b-arrow:nth-child(2) {
+					transform: scale(.6);
+					.transition(transform, .2s, ease, .1s);
+				}
+				.@{main}-c-b-arrow:nth-child(3) {
+					transform: scale(.8);
+					.transition(transform, .2s, ease, 0s);
+				}
+			}
+			
+			// При наведении
+			&:hover {				
+				.@{main}-c-b-arrows {
+					& > .@{main}-c-b-arrow:nth-child(1) {
+						transform: translate3d(0, 5px, 0) scale(.4);
+					}
+					& > .@{main}-c-b-arrow:nth-child(2) {
+						transform: translate3d(0, 5px, 0) scale(.6);
+					}
+					& > .@{main}-c-b-arrow:nth-child(3) {
+						transform: translate3d(0, 5px, 0) scale(.8);
+					}
+				} 
+			}
+		}
+	}
+
+	// Правый
+	.@{main}-right {
+		position: relative;
+		width: 140px;
+		z-index: 1;
+		
+		// Переключение языков
+		.@{main}-r-lang {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			width: 100%;
+			top: 17.5%;
+			color: @bgColor;
+			font-size: 1.5rem;
+			
+			.lang {
+				cursor: pointer;
+				color: @bgColor;
+				.transition(color, .2s, ease, 0s);
+				
+				&.active {
+					color: @orColor;
+				}
+				
+				&:hover {
+					color: @orColor;
+				}
+			}
+		}
+		
+		// Соц. сети
+		.@{main}-r-soc {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 30%;
+			background-color: @bgColor;
+			
+			.@{main}-r-soc-btn {
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				width: 50%;
+				height: 15%;
+				margin-top: 12px;
+				transform: scale3d(1,1,1);
+				.transition(transform, .2s, ease, 0s);
+				
+				&:hover {
+					transform: scale3d(1.25,1.25,1);
+				}
+			}
+			
+		}
+	}
+}
+
+// Познакомимся?
+.@{welcome} {
+	.blockPosition();
+	
+	.@{welcome}-wrapper {
+		padding-left: 50px;
+		
+		.@{welcome}-w-label {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 35px;
+			
+			.@{welcome}-w-l-icon {
+				width: 130px;
+				height: 130px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+			.@{welcome}-w-l-text {
+				padding: 0 140px 0 25px;
+				font-size: 2rem;
+				width: 95%;
+			}
+		}
+		
+		// Последний блок с линиями
+		.@{welcome}-w-label:last-child {
+			padding-bottom: 35px;
+			
+			.@{welcome}-w-l-text {
+				&:after {
+					content: " ";
+					position: absolute;
+					right: 140px;
+					bottom: 0;
+					width: 20%;
+					height: @wmBorder;
+					background-color: @blackColor;
+				}
+				&:before {
+					content: " ";
+					position: absolute;
+					right: 140px;
+					bottom: 0;
+					width: 25px;
+					height: @wdBorder;
+					background-color: @orColor;
+					z-index: 2;
+				}
+			}
+			
+			&:after {
+				content: " ";
+				position: absolute;
+				right: 140px;
+				width: @wmBorder;
+				height: 15%;
+				bottom: -35px;
+				background-color: @blackColor;
+			}
+			&:before {
+				content: " ";
+				position: absolute;
+				right: 140px;
+				width: @wdBorder;
+				height: 50px;
+				bottom: -25px;
+				background-color: @orColor;
+				z-index: 2;
+			}
+		}
+	}
+}
+
+// Слайдер познакомимся
+.@{welcome}-slider {
+	display: relative;
+	width: 100%;
+	height: 100vh;
+	
+	// Слайды и управление
+	.@{welcome}-slider-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		
+		// Расположение слайдов
+		.@{welcome}-s-w-slides {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 90%;
+			
+			// Сам слайд
+			.welcome-s-w-s-slide {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				.transition(opacity, 1s);
+				
+				// Скрытый слайд
+				&.active {
+					opacity: 1;
+				}
+				
+				// Картинка внутри слайда
+				.welcome-s-w-s-s-img {
+					width: 100%;
+					height: 100%;
+					background-position: center bottom;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+			}
+		}
+		
+		// Управление слайдами
+		.@{welcome}-s-w-ui {
+			@widthBlock: calc(100% - 280px);
+			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: @widthBlock;
+			height: 10%;
+			border-left: @wmBorder solid @blackColor;
+			border-right: @wmBorder solid @blackColor;
+			z-index: 2;
+			
+			// Расположение управления
+			.@{welcome}-s-w-ui-baseline {
+				display: flex;
+				justify-content: space-around;
+				position: relative;
+				width: 40%;
+				height: 2px;
+				background-color: @blackColor;
+				
+				// Кнопки слайдов
+				.@{welcome}-s-w-ui-b-slide {
+					position: relative;
+					width: 20%;
+					height: 5px;
+					top: -3px;
+					cursor: pointer;
+					background-color: @blackColor;
+					transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+					transition: background-color .5s, transform .2s;
+					z-index: 2;
+					
+					// Активная
+					&.active {
+						background-color: @orColor;
+					}
+					
+					&:hover {
+						transform: translate3d(0, -5px, 0) scale3d(1, 3, 1);
+					}
+				}
+				
+			}
+		}
+	}
+	
+	// Дизайн слайдера
+	.@{welcome}-slider-lines {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		
+		.@{welcome}-s-l-left {
+			position: absolute;
+			width: @wmBorder;
+			height: 100%;
+			left: 140px;
+			background-color: @bgColor;
+			
+			&:after {
+				content: " ";
+				position: absolute;
+				width: @wdBorder;
+				height: 100px;
+				top: 150px;
+				background-color: @orColor;
+				z-index: 2;
+			}
+			
+			&:before {
+				content: " ";
+				position: absolute;
+				width: @wdBorder;
+				height: 100px;
+				@bottomPos: calc(10% + 150px);
+				bottom: @bottomPos;
+				background-color: @orColor;
+				z-index: 2;
+			}
+		}
+		.@{welcome}-s-l-right {
+			.welcome-s-l-left();
+			left: auto;
+			right: 140px;
+			
+			&:after, &:before {
+				transform: translate3d(-1px, 0, 0);
+			}
+		}
+		
+		.@{welcome}-s-l-block {
+			position: absolute;
+			width: 140px;
+			height: 140px;
+			background-color: @bgColor;
+		}
+		.@{welcome}-s-l-block:first-child {
+			top: 0;
+			left: 0;
+		}	
+		.@{welcome}-s-l-block:last-child {
+			bottom: 10%;
+			right: 0;
+		}
+	}
+}
+
+// Экскурсии для Вас
+.tours {
+	.blockPosition();
+	padding-right: 140px;
+	margin-bottom: 100px;
+	
+	// Общий блок туров
+	.tours-wrappers {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		@heightBlock: 80vh;
+		height: @heightBlock;
+		width: 100%;
+		
+		// Блоки по горизонтали
+		.tours-w-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: @heightBlock/2;
+			width: 90%;
+			margin-bottom: 5px;
+			
+			// Блок тура
+			.tours-w-w-block {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+				overflow: hidden;
+				
+				&:first-child {
+					margin-right: 5px;
+				}
+				
+				// Картинка
+				.tours-w-w-b-img {
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					width: 100%;
+					height: 100%;
+					transform: scale3d(1,1,1);
+					.transition(transform, .2s);
+				}
+				
+				// Текст
+				.tours-w-w-b-text {
+					position: absolute;
+					bottom: 4rem;
+					left: 2rem;
+					right: 2rem;
+					opacity: 0;
+					z-index: 3;
+					overflow: hidden;
+					transition: opacity .2s;
+					
+					&:before {
+						content: " ";
+						position: absolute;
+						bottom: -25%;
+						left: 0;
+						width: 4px;
+						height: 150%;
+						background-color: @bgColor;
+					}
+					
+					p {
+						font-family: extrabold;
+						font-size: 2.5rem;
+						color: @bgColor;
+						transform: translate3d(-100%, 0, 0);
+						.transition(transform, .2s);
+					}
+				}
+				
+				&:before {
+					content: " ";
+					position: absolute;
+					left: 0; right: 0;
+					top: 0; bottom: 0;
+					background-color: @orColor;
+					opacity: 0;
+					.transition(opacity, .2s);
+					z-index: 2;
+				}
+				
+				// При наведении
+				&:hover:before {
+					opacity: .7;
+				}
+				
+				&:hover .tours-w-w-b-img {
+					transform: scale3d(1.25,1.25,1);
+				}
+				
+				&:hover .tours-w-w-b-text {
+					opacity: 1;
+					
+					p {
+						transform: translate3d(10px, 0, 0);
+					}
+				}
+				
+			}
+		}
+		
+		
+	}
+	
+}
+
+// Давайте пообщаемся
+.about {
+	.blockPosition();
+	padding-right: 140px;
+	margin-bottom: 100px;
+	
+	.about-wrapper {
+		display: flex;
+		justify-content: space-between;
+		width: 90%;
+		
+		// Информация
+		.about-w-info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
+			width: 30%;
+			
+			.about-w-i-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				position: absolute;
+				width: 100%;
+				
+				// Фото
+				.about-w-i-img {
+					width: 100%;
+					height: 300px;
+					background-image: url('/img/stepanov_nikolay_2.jpg');
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				// Имя
+				.about-w-i-name {
+					margin: 15px 0;
+					font-size: 2rem;
+					width: 85%;
+
+					span {
+						color: @orColor;
+					}
+				}
+				// Соц. сети
+				.about-w-i-soc {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 90%;
+					height: 40px;
+
+					.about-w-i-soc-btn {
+						width: 15%;
+						height: 50px;
+						margin-right: 20px;
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: contain;
+						transform: scale3d(1,1,1);
+						.transition(transform, .2s);
+
+						&:hover {
+							transform: scale3d(1.25,1.25,1);
+						}
+					}
+				}
+
+				// Фиксированное положение
+				&.fixed {
+					position: fixed;
+					top: 0;
+				}
+				
+				// Нижнее положение
+				&.bottom {
+					bottom: 0;
+				}
+			}
+			
+			
+		}
+		
+		// Текст
+		.about-w-text {
+			width: 70%;
+			
+			p {
+				margin-bottom: 1em;
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+
+// Как все происходит
+.explanation {
+	.blockPosition();
+	padding-right: 140px;
+	margin-bottom: 100px;
+	
+	.explanation-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		// Текст
+		.explanation-w-text {
+			align-self: center;
+			width: 90%;
+			
+			p {
+				margin-bottom: 15px;
+				font-size: 1.2rem;
+			}
+		}
+		
+		// Слайдер
+		.explanation-w-slider {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			width: 90%;
+			height: 50vh;
+			
+			.explanation-w-s-wrapper {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				@duration: 1s;
+				
+				.explanation-w-s-slide {
+					position: absolute;
+					right: 0;
+					width: 60%;
+					height: 100%;
+					opacity: 0;
+					transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+					z-index: 3;
+					transition: transform @duration, opacity @duration / 2;
+					
+					// Картинка внутри
+					.explanation-w-s-s-img {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						background-position: center;
+						background-size: cover;
+						background-repeat: no-repeat;
+					}
+					
+					&.second {
+						transform: scale3d(.7, .7, 1) translate3d(-65%, 0, 0);
+						opacity: 1;
+						z-index: 2;
+						
+						&:after {
+							content: " ";
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(255, 255, 255, 0.5);
+							.transition(background-color, @duration);
+						}
+					}
+					&.third {
+						transform: scale3d(.5, .5, 1) translate3d(-160%, 0, 0);
+						opacity: 1;
+						z-index: 1;
+						
+						&:after {
+							content: " ";
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(255, 255, 255, 0.7);
+							.transition(background-color, @duration);
+						}
+					}
+					&.hide {
+						transform: scale3d(.4, .4, 1) translate3d(-220%, 0, 0);
+						opacity: 0;
+						z-index: 0;
+					}
+					&.active {
+						opacity: 1;
+					}
+					&.active-last {
+						opacity: 0;
+						transform: scale3d(1.1, 1.1, 1) translate3d(0, 0, 0);
+						z-index: 4;
+						
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+// Отзывы
+.reviews {
+	.blockPosition();
+	
+	padding-right: 140px;
+	margin-bottom: 100px;
+	
+	.reviews-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		
+		.reviews-w-rev {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			
+			.reviews-w-r-wrapper {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				margin-bottom: 30px;
+				
+				// Комментарий
+				.reviews-w-r-w-block {
+					border: 1px solid @blackColor;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					width: 45%;
+					margin: 0 15px;
+					padding: 10px;
+					
+					// Кто написал
+					.reviews-w-r-w-b-name {
+						font-family: semibold;
+						font-size: 1.3rem;
+						margin-bottom: 15px;
+						width: 98%;
+					}
+					// Время и город
+					.reviews-w-r-w-b-ui {
+						display: flex;
+						flex-direction: column;
+						position: relative;
+						line-height: 2.6rem;
+						padding-left: 3rem;
+						font-size: 1.4rem;
+						margin-bottom: 15px;
+						width: 90%;
+						
+						.reviews-ui-date {							
+							&:before {
+								content: " ";
+								position: absolute;
+								width: 2.2rem;
+								height: 2.2rem;
+								left: 0;
+								top: 0;
+								background-image: url('/img/icons/calendar.svg');
+								background-position: center;
+								background-size: contain;
+								background-repeat: no-repeat;
+							}
+						}
+						
+						.reviews-ui-city {
+							.reviews-ui-date();
+							margin-bottom: 0;
+							
+							&:before {
+								top: 55%;
+								background-image: url('/img/icons/building.svg');
+							}
+						}
+					}
+					// Текст
+					.reviews-w-r-w-b-text {
+						width: 93%;
+						
+						p {
+							margin-bottom: 1rem;
+						}
+					}
+                    // Кнопка
+                    .rewiews-w-e-w-b-btn {
+                        align-self: flex-end;
+                        margin-right: 5%;
+                    }
+				}
+			}
+		}
+	}
+}
+// Слайдер познакомимся
+.@{reviews}-slider {
+	display: relative;
+	width: 100%;
+	height: 100vh;
+	
+	// Слайды и управление
+	.@{reviews}-slider-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		
+		// Расположение слайдов
+		.@{reviews}-s-w-slides {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 90%;
+			
+			// Сам слайд
+			.reviews-s-w-s-slide {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				.transition(opacity, 1s);
+				
+				// Скрытый слайд
+				&.active {
+					opacity: 1;
+				}
+				
+				// Картинка внутри слайда
+				.reviews-s-w-s-s-img {
+					width: 100%;
+					height: 100%;
+					background-position: center bottom;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+			}
+		}
+		
+		// Управление слайдами
+		.@{reviews}-s-w-ui {
+			@widthBlock: calc(100% - 280px);
+			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: @widthBlock;
+			height: 10%;
+			border-left: @wmBorder solid @blackColor;
+			border-right: @wmBorder solid @blackColor;
+			z-index: 2;
+			
+			// Расположение управления
+			.@{reviews}-s-w-ui-baseline {
+				display: flex;
+				justify-content: space-around;
+				position: relative;
+				width: 40%;
+				height: 2px;
+				background-color: @blackColor;
+				
+				// Кнопки слайдов
+				.@{reviews}-s-w-ui-b-slide {
+					position: relative;
+					width: 20%;
+					height: 5px;
+					top: -3px;
+					cursor: pointer;
+					background-color: @blackColor;
+					transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+					transition: background-color .5s, transform .2s;
+					z-index: 2;
+					
+					// Активная
+					&.active {
+						background-color: @orColor;
+					}
+					
+					&:hover {
+						transform: translate3d(0, -5px, 0) scale3d(1, 3, 1);
+					}
+				}
+				
+			}
+		}
+	}
+	
+	// Дизайн слайдера
+	.@{reviews}-slider-lines {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		
+		.@{reviews}-s-l-left {
+			position: absolute;
+			width: @wmBorder;
+			height: 100%;
+			left: 140px;
+			background-color: @bgColor;
+			
+			&:after {
+				content: " ";
+				position: absolute;
+				width: @wdBorder;
+				height: 100px;
+				top: 150px;
+				background-color: @orColor;
+				z-index: 2;
+			}
+			
+			&:before {
+				content: " ";
+				position: absolute;
+				width: @wdBorder;
+				height: 100px;
+				@bottomPos: calc(10% + 150px);
+				bottom: @bottomPos;
+				background-color: @orColor;
+				z-index: 2;
+			}
+		}
+		.@{reviews}-s-l-right {
+			.reviews-s-l-left();
+			left: auto;
+			right: 140px;
+			
+			&:after, &:before {
+				transform: translate3d(-1px, 0, 0);
+			}
+		}
+		
+		.@{reviews}-s-l-block {
+			position: absolute;
+			width: 140px;
+			height: 140px;
+			background-color: @bgColor;
+		}
+		.@{reviews}-s-l-block:first-child {
+			top: 0;
+			left: 0;
+		}	
+		.@{reviews}-s-l-block:last-child {
+			bottom: 10%;
+			right: 0;
+		}
+	}
+}
+
+// Заметки
+.notes {
+	.blockPosition();
+	padding-right: 140px;
+	margin-bottom: 150px;
+	
+	.notes-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+        
+        .notes-w-rev {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            
+            .notes-w-r-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 15px 0;
+                
+                .notes-w-r-w-block {
+                    border: 1px solid @blackColor;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					width: 45%;
+					margin: 0 15px;
+					padding: 10px;
+                    
+                    // Заголовок
+                    .notes-b-name {
+                        font-family: semibold;
+						font-size: 1.3rem;
+						margin-bottom: 15px;
+						width: 98%;
+                    }
+                    
+                    // Картинка
+                    .notes-b-img {
+                        width: 90%;
+                        height: 250px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        margin-bottom: 15px;
+                    }
+                    
+                    // Дата
+                    .notes-b-date {
+                        display: flex;
+						flex-direction: column;
+						position: relative;
+						line-height: 2.6rem;
+						padding-left: 3rem;
+						font-size: 1.4rem;
+						margin-bottom: 15px;
+						width: 90%;
+                        
+                        &:before {
+                            content: " ";
+                            position: absolute;
+                            width: 2.2rem;
+                            height: 2.2rem;
+                            left: 0;
+                            top: 0;
+                            background-image: url('/img/icons/calendar.svg');
+                            background-position: center;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    
+                    // Тексты
+                    .notes-b-text {
+                        width: 93%;
+						
+						p {
+							margin-bottom: 1rem;
+						}
+                    }
+                    
+                    // Кнопка
+                    .notes-b-btn {
+                        align-self: flex-end;
+                        margin-right: 5%;
+                    }
+                }
+            }
+        }
+	}
+}
+
+// Подвал
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 500px;
+    width: 100%;
+    
+    .footer-sitemap {
+        height: 50%;
+        width: 100%;
+        background-color: @orColor;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
