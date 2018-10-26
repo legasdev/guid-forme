@@ -7,6 +7,7 @@ var
 
 $(document).ready( () => {
     ScrollDownPage();
+    $('.main').removeClass('hideOn');
 });
 
 
@@ -51,13 +52,13 @@ ScrollDownPage = () => {
 DetectViewPort = () => {
     
     // Проходим по всем базовым блокам
-    $('body').children().filter('div, section').not('.menu-btn, .welcome-slider, .reviews-slider').each( (i, e) => {
+    $('body').children().filter('section').each( (i, e) => {
         // Проверка на то, был ли виден блок
         let 
             screenPosY = $(window).scrollTop() + $(window).height() / 2;
         
-        if (screenPosY > $(e).offset().top && $(e).hasClass('hideOn')) {
-            console.log(e);
+        if ($(e).hasClass('hideOn') && screenPosY > $(e).offset().top) {
+            $(e).removeClass('hideOn');
         }
     });
 }

@@ -453,7 +453,9 @@ body {
 					height: 100%;
 					background-color: @bgColor;
                     transform: scale3d(1,1,1);
+                    transform-origin: top;
                     .transition(transform, .3s);
+                    
                     
                     // Рыжие полоски
 					&:before, &:after {
@@ -506,6 +508,8 @@ body {
 							bottom: -2.8rem;
 							z-index: 2;
 							background-color: @orColor;
+                            opacity: 1;
+                            .transition(opacity, .2s, ease, .5s);
 						}
 						&:after {
 							content: " ";
@@ -517,11 +521,15 @@ body {
 							bottom: -1rem;
 							z-index: 2;
 							background-color: @orColor;
+                            opacity: 1;
+                            .transition(opacity, .2s, ease, .5s);
 						}
 						
 						// Текст приветствия
 						p {
 							line-height: 1em;
+                            opacity: 1;
+                            .transition(opacity, .2s, ease, .2s);
 						}
 						& p:last-child {
 							position: relative;
@@ -536,6 +544,9 @@ body {
 								width: 85%;
 								background-color: #fff;
 								left: -.75em;
+                                transform: scale3d(1, 1, 1);
+                                transform-origin: left;
+                                .transition(transform, .2s, ease, .3s);
 							}
 						}
 					}
@@ -551,6 +562,8 @@ body {
 						right: 0;
 						top: 12%;
 						padding-right: 1rem;
+                        opacity: 1;
+                        .transition(opacity, .2s, ease, .2s);
 						
 						p:first-child {
 							margin-bottom: 2rem;
@@ -564,6 +577,9 @@ body {
 								background-color: @bgColor;
 								top: 38%;
 								right: 0;
+                                transform: scale3d(1, 1, 1);
+                                transform-origin: right;
+                                .transition(transform, .2s, ease, .3s);
 							}
 						}
 					}
@@ -734,12 +750,39 @@ body {
 		}
 	}
 
+    // Еще скрыт
     &.hideOn {
-        .@{main}-c-w-line {
-            transform: scale3d(1,0,1);
+        // линии
+        .@{main}-center .@{main}-c-top .@{main}-c-wrapper {
+            .@{main}-c-w-line {
+            transform: scale3d(1,0,1); 
             &:before, &:after {
                 opacity: 0;
             }
+        }
+            
+            .@{main}-c-w-block  {
+                .@{main}-c-w-welcome {
+                    &:before, &:after, p {
+                        opacity: 0;
+                    }
+                    p:last-child {
+                        &:after {
+                            transform: scale3d(0, 1, 1);
+                        }
+                    }
+                }
+                
+                .@{main}-c-w-info {
+                    opacity: 0;
+                    p:first-child {
+                        &:after {
+                            transform: scale3d(0, 1, 1);
+                        }
+                    }
+                }
+            }
+                
         }
     }
 }
