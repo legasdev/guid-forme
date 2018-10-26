@@ -452,13 +452,25 @@ body {
 					width: @wmBorder;
 					height: 100%;
 					background-color: @bgColor;
-
+                    transform: scale3d(1,1,1);
+                    .transition(transform, .3s);
+                    
+                    &.hideOn {
+                        transform: scale3d(1,0,1);
+                        &:before, &:after {
+                            opacity: 0;
+                        }
+                    }
+                    
+                    // Рыжие полоски
 					&:before, &:after {
 						content: " ";
 						position: absolute;
 						width: @wdBorder;
 						height: 7%;
 						background-color: @orColor;
+                        opacity: 1;
+                        .transition(opacity, .3s, ease, .3s);
 					}
 
 					&.left:before, &.right:before {
