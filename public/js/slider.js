@@ -5,7 +5,8 @@
 */
 
 let
-  startSlider;
+    startSlider,
+    startHardSlider;
   
 
 $(document).ready(() => {

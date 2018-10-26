@@ -7,12 +7,12 @@ var
 
 $(document).ready( () => {
     ScrollDownPage();
-    DetectViewPort();
 });
 
 
 $(window).scroll( (e) => {
 	AboutBlockInfoPos();
+    DetectViewPort();
 });
 
 // Отслеживаем положение блока about
@@ -52,6 +52,12 @@ DetectViewPort = () => {
     
     // Проходим по всем базовым блокам
     $('body').children().filter('div, section').not('.menu-btn, .welcome-slider, .reviews-slider').each( (i, e) => {
-        if (5)
+        // Проверка на то, был ли виден блок
+        let 
+            screenPosY = $(window).scrollTop() + $(window).height() / 2;
+        
+        if (screenPosY > $(e).offset().top && $(e).hasClass('hideOn')) {
+            console.log(e);
+        }
     });
 }

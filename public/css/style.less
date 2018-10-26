@@ -455,13 +455,6 @@ body {
                     transform: scale3d(1,1,1);
                     .transition(transform, .3s);
                     
-                    &.hideOn {
-                        transform: scale3d(1,0,1);
-                        &:before, &:after {
-                            opacity: 0;
-                        }
-                    }
-                    
                     // Рыжие полоски
 					&:before, &:after {
 						content: " ";
@@ -740,6 +733,15 @@ body {
 			
 		}
 	}
+
+    &.hideOn {
+        .@{main}-c-w-line {
+            transform: scale3d(1,0,1);
+            &:before, &:after {
+                opacity: 0;
+            }
+        }
+    }
 }
 
 // Познакомимся?
