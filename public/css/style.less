@@ -662,6 +662,95 @@ body {
     }
 }
 
+// Отзывы
+.reviews {
+    .flex();
+    
+    & > .reviews-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: 120px;
+        width: calc(100% - 180px);
+        height: 100%;
+        
+        & > .name-block {
+            padding-left: 0;
+        }
+        
+        & > .reviews-w {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90%;
+            
+            // Кнопки больше отзывов
+            & > .reviews-w-more {
+                position: relative;
+                color: @orColor;
+                text-decoration: none;
+                text-transform: uppercase;
+                
+                &:nth-child(1) {
+                    transform: rotate(270deg);
+                }
+                &:last-child {
+                    transform: rotate(90deg);
+                }
+                
+                & > p {
+                    position: relative;
+                    font-size: 2rem;
+                    font-family: mont-eb;
+                }
+                
+                // Контур
+                & > .reviews-wm-border {
+                    top: -.5rem;
+                    left: -1rem;
+                    position: absolute;
+                    font-family: mont-r;
+                    font-size: 2rem;
+                    text-shadow: 
+                        1px 1px 1px @orColor, 
+                        -1px -1px 1px @orColor, 
+                        1px -1px 1px @orColor,
+                        -1px 1px 1px @orColor;
+                    color: @bgColor;
+                    opacity: .3;
+                }
+                
+                // Линии и прочее
+                & > .reviews-wm-design {
+                    position: absolute;
+                    width: 130%;
+                    height: 4rem;
+                    top: -1rem;
+                    left: -2rem;
+                    .ccibg();
+                    background-image: url('/img/vertical-lines-black-opacity.svg');
+                    opacity: .4;
+                    
+                    &:before, &:after {
+                        content: " ";
+                        position: absolute;
+                        height: 1px;
+                        width: 100%;
+                        bottom: -5px;
+                        background-color: @orColor;
+                        opacity: .2;
+                    }
+                    
+                    &:after {
+                        bottom: -10px;
+                        width: 87%;
+                        background-color: @blackColor;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // Анимации
 
