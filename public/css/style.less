@@ -666,6 +666,21 @@ body {
 .reviews {
     .flex();
     
+    & > .reviews-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;        
+        
+        & > .reviews-d-lines {
+            position: absolute;
+            top: 2.5%;
+            height: 95%;
+            width: 100%;
+            background-image: url('/img/vertical-lines-black.svg');
+        }
+    }
+    
     & > .reviews-wrapper {
         position: absolute;
         display: flex;
@@ -696,6 +711,7 @@ body {
                 }
                 &:last-child {
                     transform: rotate(90deg);
+                    right: 0;
                 }
                 
                 & > p {
@@ -745,6 +761,152 @@ body {
                         bottom: -10px;
                         width: 87%;
                         background-color: @blackColor;
+                    }
+                }
+            }
+            
+            // Здесь таблички отзывы
+            & > .reviews-w-rev {
+                position: relative;
+                height: 90%;
+                
+                // Табличка
+                & > .reviews-wr-review {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: absolute;
+                    width: 23vw;
+                    height: 60%;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+                    background-color: @bgColor;
+                    
+                    & > .reviews-wrr-name {
+                        font-family: mont-b;
+                        font-size: 1.3rem;
+                        margin-bottom: 3%;
+                        padding: 10px;
+                    }
+                    
+                    & > .reviews-wrr-text {
+                        font-family: mont-l;
+                        font-size: .8rem;
+                        padding: 10px 20px;
+                    }
+                    
+                    // Низ карточки, где компас
+                    & > .reviews-wrr-wrapper {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 25%;
+                        
+                        // Дата и город
+                        & > .reviews-wrrb-top {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-end;
+                            justify-content: center;
+                            text-align: right;
+                            width: 100%;
+                            height: 50%;
+                            padding-right: 5%;
+                            font-size: .9rem;
+                            
+                            & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
+                                position: relative;
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                width: 50%;
+                                height: 50%;
+                                font-family: mont-l;
+                                padding-right: 25px;
+                                
+                                &:after {
+                                    content: " ";
+                                    top: 0;
+                                    right: 0;
+                                    width: 20px;
+                                    height: 20px;
+                                    position: absolute;
+                                    background-position: center;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-image: url('/img/icons/calendar.svg');
+                                }
+                            }
+                            
+                            & > .reviews-wrrbt-city {
+                                &:after {
+                                    background-image: url('/img/icons/building.svg');
+                                }
+                            }
+                            
+                        }
+                        
+                        // Здесь кнопка подробнее
+                        & > .reviews-wrrb-bottom {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            width: 100%;
+                            height: 50%;
+                            background-color: @orColor;
+                            
+                            & > .reviews-wrrbb-btn {
+                                width: 50%;
+                                font-family: mont-b;
+                                font-size: 1rem;
+                                text-transform: uppercase;
+                                text-decoration: none;
+                                text-align: center;
+                                color: @bgColor;
+                            }
+                        }
+                    }
+                    
+                    &:nth-child(1) {
+                        z-index: 2;
+                        transform: translate3d(-140%, 35%, 0);
+                    }
+                    
+                    &:nth-child(2) {
+                        z-index: 4;
+                        transform: translate3d(-50%, 0, 0);
+                        width: 35vw;
+                        height: 90%;
+                        
+                        & > .reviews-wrr-name {
+                            font-size: 2rem;
+                        }
+                        
+                        & > .reviews-wrr-text {
+                            font-size: 1.3rem;
+                        }
+                        
+                        & > .reviews-wrr-wrapper > .reviews-wrrb-top {
+                            font-size: 1.5rem;
+                            
+                            & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
+                                padding-right: 45px;
+                                
+                                &:after {
+                                    width: 35px;
+                                    height: 35px;
+                                }
+                            }
+                        }
+                        
+                        & > .reviews-wrr-wrapper > .reviews-wrrb-bottom > .reviews-wrrbb-btn {
+                            font-size: 1.5rem;
+                        }
+                    }
+                    
+                    &:nth-child(3) {
+                        z-index: 2;
+                        transform: translate3d(40%, 35%, 0);
                     }
                 }
             }

@@ -8,6 +8,8 @@ $(document).ready( () => {
     $('body').on('mouseenter', '.compass-link', (e) => {
         hoverCompassLink(e);
     });
+    $('.reviews-w-more:first').css('left', -$('.reviews-w-more:first').width() / 2.5);
+    $('.reviews-w-more:last').css('left', $('.reviews-w-more:last').width() / 2.5);
     
 });
 
