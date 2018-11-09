@@ -927,8 +927,7 @@ body {
                                 background-size: contain;
                                 background-image: url('/img/arrow-black.svg');
                                 transform-origin: 86% 50%;
-                                transition: transform .5s ease-in-out;
-                                animation: compass-circle_arrow 5s ease-in-out infinite;
+                                animation: compass-circle_arrow 15s ease-in-out infinite;
                             }
                             
                             // Буквы
@@ -1019,6 +1018,41 @@ body {
                 }
             }
         }
+    }
+}
+
+// Заметки о Черногории
+.notes {
+    .flex();
+    .ccibg();
+    background-image: url('/img/main-img-4.jpg');
+    
+    & > .notes-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(86, 86, 86, .5);
+        
+        & > .notes-d-lines {
+            position: absolute;
+            align-self: center;
+            top: 5%;
+            width: 100%;
+            height: 90%;
+            .ccibg();
+            background-image: url('/img/vertical-lines.svg');
+        }
+    }
+    
+    & > .notes-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        left: 120px;
+        width: calc(100% - 180px);
+        height: 100%;
     }
 }
 
