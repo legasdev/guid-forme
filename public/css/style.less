@@ -1048,11 +1048,196 @@ body {
     & > .notes-wrapper {
         position: absolute;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         left: 120px;
         width: calc(100% - 180px);
         height: 100%;
+        
+        & > .name-block {
+            color: @bgColor;
+            padding-left: 0;
+        }
+        
+        & > .notes-w {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90%;
+            
+            // Блок с заметкой
+            & > .notes-w-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 40%;
+                height: 80%;
+                background-color: @bgColor;
+                
+                // Название
+                & > .notes-wb-name {
+                    font-family: mont-b;
+                    padding: 10px;
+                    font-size: 1.7rem;
+                }
+                
+                & > .notes-wb-info {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 35%;
+                    padding: 0 0 0 15px;
+                    
+                    & > .notes-wbi-img {
+                        position: relative;
+                        width: 60%;
+                        height: 100%;
+                        .ccibg();
+                        background-image: url('/img/notes/1.jpg');
+                        
+                        .desktop({
+                            width: 80%;
+                            height: 100%; 
+                        });
+                    }
+                    
+                    & > .notes-wbi-date {
+                        position: relative;
+                        transform: rotate(90deg);
+                        font-size: 1.3rem;
+                        font-family: mont-l;
+                        padding-left: 42px;
+                        
+                        &:before {
+                            content: " ";
+                            position: absolute;
+                            top: -5px;
+                            left: 0;
+                            width: 30px;
+                            height: 30px;
+                            .ccibg();
+                            background-image: url('/img/icons/calendar.svg');
+                        }
+                    }
+                }
+                
+                & > .notes-wb-text {
+                    padding: 15px;
+                }
+                
+                & > .notes-wb-bottom {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 12%;
+                    background-color: @orColor;
+                    
+                    & > .notes-wbb-btn {
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        color: @bgColor;
+                        font-family: mont-b;
+                        font-size: 1.3rem;
+                    }
+                }
+                
+                &:nth-child(2) {
+                    width: 35%;
+                    height: 70%;
+                    
+                    & > .notes-wb-name {
+                        font-size: 1.5rem;
+                    }
+                    
+                    & > .notes-wb-info {
+                        & > .notes-wbi-date {
+                            font-size: 1.1rem;
+                        }
+                    }
+                    
+                    & > .notes-wb-text {
+                        font-size: .9rem;
+                    }
+                    
+                    & > .notes-wb-bottom {
+                        & > .notes-wbb-btn {
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+            
+            // Больше заметок (кнопка)
+            & > .notes-w-btn {
+                position: relative;
+                color: @bgColor;
+                text-decoration: none;
+                text-transform: uppercase;
+                width: 10%;
+                
+                // Кнопки больше отзывов
+                &:last-child {
+                    position: absolute;
+                    width: auto;
+                    transform: rotate(90deg);
+                    right: -10%;
+                }
+
+                & > p {
+                    position: relative;
+                    font-size: 3rem;
+                    font-family: mont-eb;
+                    
+                    .desktop({
+                       font-size: 1.8rem; 
+                    });
+                }
+
+                // Контур
+                & > .notes-wm-border {
+                    top: -.5rem;
+                    left: -1rem;
+                    position: absolute;
+                    font-family: mont-eb;
+                    font-size: 3rem;
+                    -webkit-text-stroke: 1px @bgColor;
+                    color: transparent;
+                    opacity: .3;
+                    
+                    .desktop({
+                       font-size: 1.8rem; 
+                    });
+                }
+
+                // Линии и прочее
+                & > .notes-wm-design {
+                    position: absolute;
+                    width: 130%;
+                    height: 4rem;
+                    top: -1rem;
+                    left: -2rem;
+                    .ccibg();
+                    background-image: url('/img/vertical-lines-opacity.svg');
+                    opacity: 1;
+
+                    &:before, &:after {
+                        content: " ";
+                        position: absolute;
+                        height: 1px;
+                        width: 100%;
+                        bottom: -5px;
+                        background-color: @orColor;
+                        opacity: .2;
+                    }
+
+                    &:after {
+                        bottom: -10px;
+                        width: 87%;
+                        background-color: @bgColor;
+                    }
+                }
+            }
+        }
     }
 }
 
