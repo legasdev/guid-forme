@@ -865,6 +865,91 @@ body {
                                 color: @bgColor;
                             }
                         }
+                        
+                        // Компас
+                        & > .reviews-wrrb-compass {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            width: 11vh;
+                            height: 11vh;
+                            left: 3vh;
+                            
+                            //Кружки в компасе
+                            & > .reviews-wrrbc-circle {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background-color: transparent;
+                                border: 1px solid @orColor;
+                                border-radius: 100%;
+                                
+                                &:nth-child(1) {
+                                    background-color: @bgColor;
+                                }
+                                
+                                &:nth-child(2) {
+                                    width: 90%;
+                                    height: 90%;
+                                    border: 1px solid rgba(0,0,0,.3);
+                                    animation: compass-circle_2 12s linear infinite;
+                                }
+                                
+                                &:nth-child(3) {
+                                    width: 70%;
+                                    height: 70%;
+                                    border: 1px solid @orColor;
+                                }
+                                
+                                &:nth-child(4) {
+                                    width: 30%;
+                                    height: 30%;
+                                    border: 1px solid rgba(0,0,0,.3);
+                                    animation: compass-circle_1 5s linear infinite;
+                                }
+                                
+                                &:nth-child(5) {
+                                    width: 20%;
+                                    height: 20%;
+                                    border: 1px solid @orColor;
+                                }
+                            }
+                            
+                            // Стрелка
+                            & > .reviews-wrrbc-arrow {
+                                position: absolute;
+                                width: 70%;
+                                height: 15%;
+                                opacity: .6;
+                                right: 40%;
+                                .ccibg();
+                                background-size: contain;
+                                background-image: url('/img/arrow-black.svg');
+                                transform-origin: 86% 50%;
+                                transition: transform .5s ease-in-out;
+                                animation: compass-circle_arrow 5s ease-in-out infinite;
+                            }
+                            
+                            // Буквы
+                            & > .reviews-wrrbc-word {
+                                position: absolute;
+                                font-size: .7rem;
+                                opacity: .5;
+                                
+                                &:nth-last-child(1) {
+                                    right: -1rem;
+                                    top: 40%;
+                                }
+                                &:nth-last-child(2) {
+                                    top: -1.1rem;
+                                }
+                                &:nth-last-child(3) {
+                                    left: -1.2rem;
+                                    top: 40%;
+                                }
+                            }
+                        }
                     }
                     
                     &:nth-child(1) {
@@ -886,21 +971,44 @@ body {
                             font-size: 1.3rem;
                         }
                         
-                        & > .reviews-wrr-wrapper > .reviews-wrrb-top {
-                            font-size: 1.5rem;
+                        & > .reviews-wrr-wrapper {
                             
-                            & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
-                                padding-right: 45px;
-                                
-                                &:after {
-                                    width: 35px;
-                                    height: 35px;
+                            & > .reviews-wrrb-top {
+                                font-size: 1.5rem;
+
+                                & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
+                                    padding-right: 45px;
+
+                                    &:after {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
                                 }
                             }
-                        }
-                        
-                        & > .reviews-wrr-wrapper > .reviews-wrrb-bottom > .reviews-wrrbb-btn {
-                            font-size: 1.5rem;
+                            
+                            & > .reviews-wrrb-bottom > .reviews-wrrbb-btn {
+                                font-size: 1.5rem;
+                            }
+                            
+                            & > .reviews-wrrb-compass {
+                                position: absolute;
+                                width: 16vh;
+                                height: 16vh;
+                                
+                                & > .reviews-wrrbc-word {
+                                    font-size: 1rem;
+                                    
+                                    &:nth-last-child(1) {
+                                        right: -1rem;
+                                    }
+                                    &:nth-last-child(2) {
+                                        top: -1.1rem;
+                                    }
+                                    &:nth-last-child(3) {
+                                        left: -1.2rem;
+                                    }
+                                }
+                            }
                         }
                     }
                     
@@ -975,18 +1083,36 @@ body {
 
 @keyframes compass-circle_arrow {
     0% {
-        transform: rotate(45deg);
+        transform: rotate(80deg);
     }
-    25% {
-        transform: rotate(0);
+    10% {
+        transform: rotate(85deg);
+    }
+    20% {
+        transform: rotate(80deg);
+    }
+    30% {
+        transform: rotate(70deg);
+    }
+    40% {
+        transform: rotate(75deg);
     }
     50% {
-        transform: rotate(-45deg);
+        transform: rotate(65deg);
     }
-    75% {
-        transform: rotate(-90deg);
+    60% {
+        transform: rotate(55deg);
+    }
+    70% {
+        transform: rotate(50deg);
+    }
+    80% {
+        transform: rotate(55deg);
+    }
+    90% {
+        transform: rotate(70deg);
     }
     100% {
-        transform: rotate(45deg);
+        transform: rotate(80deg);
     }
 }
