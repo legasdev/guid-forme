@@ -1,6 +1,6 @@
 /*======================================*\
 *
-*   Title: Главная страница сайта
+*   Title: Общие параметры
 *   Autor: Artem Stepanov
 *   E-mail: temka.do@gmail.com
 *
@@ -73,4 +73,45 @@
 body {
     font-size: 16px;
     overflow-x: hidden;
+}
+
+// Меню кнопка
+.menu-btn {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 119px;
+    height: 119px;
+    z-index: 15;
+    cursor: pointer;
+    
+    // Палочки
+    & > .menu-b-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        
+        & > div {
+            width: 100%;
+            height: 2px;
+            background-color: @bgColor;
+            margin: 4px 0;
+            border-radius: 100%;
+        }
+    }
+    
+    // Надпись
+    & > .menu-b-label {
+        text-transform: uppercase;
+        color: @bgColor;
+        font-size: .8rem;
+        font-family: mont-b;
+    }
 }

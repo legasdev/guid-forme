@@ -8,16 +8,6 @@
 
 @import "style-total";
 
-// Меню
-.menu-btn {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 119px;
-    height: 119px;
-    z-index: 10;
-}
-
 // Первый экран
 .main {
     .flex();
@@ -188,6 +178,15 @@
                             .ccibg();
                             background-image: url('/img/compass.svg');
                             animation: compass-circle_ride 60s linear infinite;
+                        }
+                        
+                        & > .main-c-c-circle_inner_2 {
+                            position: absolute;
+                            width: 35%;
+                            height: 35%;
+                            .ccibg();
+                            background-image: url('/img/compass.svg');
+                            animation: compass-circle_ride 120s linear reverse infinite;
                         }
                     }
                     
