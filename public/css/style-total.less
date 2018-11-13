@@ -32,7 +32,11 @@
 @orColor: #ff6636;
 @blackColor: #000;
 
-// Примеси
+/*************
+*
+*    Примеси
+*
+**************/
 
 // Флекс
 .flex() {
@@ -50,6 +54,11 @@
     background-repeat: no-repeat;
 }
 
+/*************
+*
+*    Адаптивность
+*
+**************/
 
 // Mode: Tablet
 @tablet-area: 750px;
@@ -63,6 +72,21 @@
   @media (max-width: 1280px) { @rules(); }
 }
 
+/*************
+*
+*    Общие стили
+*
+**************/
+
+a:active, a:focus { outline: none; }
+
+input, textarea {outline:none;}
+input:active, textarea:active {outline:none;}
+:focus {outline:none;}
+textarea {resize:none;}
+textarea {resize:vertical;}
+textarea {resize:horizontal;}
+
 * {
     padding: 0;
     margin: 0;
@@ -74,6 +98,12 @@ body {
     font-size: 16px;
     overflow-x: hidden;
 }
+
+/*************
+*
+*    Дополнительные общие стили
+*
+**************/
 
 // Меню кнопка
 .menu-btn {
