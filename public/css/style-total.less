@@ -1,0 +1,76 @@
+/*======================================*\
+*
+*   Title: Главная страница сайта
+*   Autor: Artem Stepanov
+*   E-mail: temka.do@gmail.com
+*
+\*======================================*/
+
+@font-face {
+    font-family: mont-r;
+    src: url('/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: mont-b;
+    src: url('/fonts/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: mont-eb;
+    src: url('/fonts/Montserrat-ExtraBold.ttf');
+}
+@font-face {
+    font-family: mont-l;
+    src: url('/fonts/Montserrat-Light.ttf');
+}
+@font-face {
+    font-family: mont-sb;
+    src: url('/fonts/Montserrat-SemiBold.ttf');
+}
+
+// Переменные
+@bgColor: #fff;
+@orColor: #ff6636;
+@blackColor: #000;
+
+// Примеси
+
+// Флекс
+.flex() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+// center cover image background
+.ccibg() {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+// Mode: Tablet
+@tablet-area: 750px;
+.tablet(@rules) {
+  @media (max-width: 768px) { @rules(); }
+}
+
+// Mode: Desktop
+@desktop-area: 970px;
+.desktop(@rules) {
+  @media (max-width: 1280px) { @rules(); }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: mont-r;
+}
+
+body {
+    font-size: 16px;
+    overflow-x: hidden;
+}

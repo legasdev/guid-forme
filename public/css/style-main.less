@@ -1,0 +1,1487 @@
+/*======================================*\
+*
+*   Title: Главная страница сайта
+*   Autor: Artem Stepanov
+*   E-mail: temka.do@gmail.com
+*
+\*======================================*/
+
+@import "style-total";
+
+// Меню
+.menu-btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 119px;
+    height: 119px;
+    z-index: 10;
+}
+
+// Первый экран
+.main {
+    .flex();
+    .ccibg();
+    background-image: url('/img/main-img-5.jpg');
+    
+    & > .main-shadow {
+        position: relative;
+        .flex();
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: rgba(86, 86, 86, .5);
+        
+        // Информация
+        & > .main-s-info {
+            position: absolute;
+            .flex();
+            justify-content: space-between;
+            align-items: flex-start;
+            
+            & > .main-left {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 120px;
+                height: 50vh;
+                font-size: 1.5rem;
+                color: @bgColor;
+                
+                & > .main-l-lang {
+                    font-family: mont-l;
+                    
+                    & > .chose {
+                        color: @orColor;
+                    }
+                }
+            }
+            
+            & > .main-center {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: calc(100% - 120px);
+                height: 100%;
+                
+                // Иформация
+                & > .main-c-info {
+                    position: relative;
+                    height: 80vh;
+                    
+                    // Заголовок
+                    & > .main-c-info-h {
+                        position: absolute;
+                        bottom: 25%;
+                        left: 1.3rem;
+                        color: @bgColor;
+                        font-family: mont-l;
+                        font-weight: 100;
+                        font-size: 1.3rem;
+                        text-transform: uppercase;
+                        
+                        & > p {
+                            font-family: mont-l;
+                            font-weight: 100;
+                            font-size: 2em;
+                        }
+                        
+                        &:after {
+                            content: " ";
+                            position: absolute;
+                            left: -1.3rem;
+                            width: 90%;
+                            height: 1px;
+                            background-color: @bgColor;
+                        }
+                    }
+                    
+                    // Телефон и почта
+                    & > .main-c-i-info {
+                        position: absolute;
+                        top: 15%;
+                        left: 1.3rem;
+                        color: @bgColor;                       
+                        font-size: 1.3rem;
+                        
+                        & > p {
+                            font-family: mont-l; 
+                        }
+                    }
+                    
+                    // Границы
+                    &:after {
+                        content: " ";
+                        position: absolute;
+                        width: 1px;
+                        height: 100%;
+                        background-color: @bgColor;
+                    }
+                }
+                
+                // Компасс
+                & > .main-c-compass {
+                    .flex();
+                    position: relative;
+                    right: 50px;
+                    height: 70vh;
+                    width: 70vh;
+                    
+                    // кружки
+                    & > .main-c-circles {
+                        .flex();
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        
+                        & > .main-c-c-circle {
+                            position: absolute;
+                            border-radius: 100%;
+                            opacity: .5;
+                        }
+                        
+                        & > .main-c-c-circle:nth-child(1) {
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid @orColor;
+                            animation: compass-circle_1 12s ease-in-out infinite;
+                        } 
+                        
+                        & > .main-c-c-circle:nth-child(2) {
+                            width: 60%;
+                            height: 60%;
+                            border: 1px solid @orColor;
+                            animation: compass-circle_2 15s ease-in-out infinite;
+                        }
+                        
+                        & > .main-c-c-circle:nth-child(3) {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 0;
+                            opacity: 1;
+                            .ccibg();
+                            background-image: url('/img/compass-1.svg');
+                        }
+                        
+                        & > .main-c-c-circle:nth-child(4) {
+                            width: 40%;
+                            height: 40%;
+                            border: 1px solid @bgColor;
+                        }
+                        
+                        & > .main-c-c-circle:nth-child(5) {
+                            width: 10%;
+                            height: 10%;
+                            border: 1px solid @orColor;
+                        }
+                        
+                        & > .main-c-c-circle:nth-child(6) {
+                            width: 4%;
+                            height: 4%;
+                            border: 1px solid @bgColor;
+                        }
+                        
+                        & > .main-c-c-circle_inner {
+                            position: absolute;
+                            width: 45%;
+                            height: 45%;
+                            .ccibg();
+                            background-image: url('/img/compass.svg');
+                            animation: compass-circle_ride 60s linear infinite;
+                        }
+                    }
+                    
+                    // стрелка
+                    & > .main-c-arrow {
+                        position: absolute;
+                        width: 30%;
+                        height: 5%;
+                        opacity: .9;
+                        right: 45%;
+                        .ccibg();
+                        background-size: contain;
+                        background-image: url('/img/arrow.svg');
+                        transform-origin: 83% 50%;
+                        transition: transform .5s ease-in-out;
+                    }
+                    
+                    // Надписи
+                    & > .main-c-labels {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        
+                        & > a {
+                            position: absolute;
+                            color: @bgColor;
+                            text-transform: uppercase;
+                            text-decoration: none;
+                            font-family: mont-sb;
+                            font-size: 1.7vh;
+                            overflow: hidden;
+                            
+                            &:after, &:before {
+                                content: " ";
+                                position: absolute;
+                                width: 80%;
+                                height: 1px;
+                                background-color: @bgColor;
+                                transition: transform .3s, background-color .3s;
+                                left: 0;
+                            }
+                            
+                            &:after {
+                                transform: translate3d(-101%, 0, 0);
+                                bottom: 0;
+                            }
+                            
+                            &:before {
+                                transform: translate3d(101%, 0, 0);
+                            }
+                            
+                            &:hover {
+                                &:after, &:before {
+                                    transform: translate3d(0, 0, 0);
+                                    background-color: @orColor;
+                                }
+                            }
+                        }
+                        
+                        & > a:nth-child(1) {
+                            left: -25%;
+                            top: 10%;
+                        }
+                        
+                        & > a:nth-child(2) {
+                            left: -33%;
+                            top: 48.5%;
+                        }
+                        
+                        & > a:nth-child(3) {
+                            left: -25%;
+                            bottom: 10%;
+                        }
+                        
+                        & > a:nth-child(4) {
+                            bottom: -5%;
+                            left: 30%;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Дизайн
+        & > .main-s-design {
+            position: absolute;
+            align-self: center;
+            width: 100%;
+            height: 90%;
+            .ccibg();
+            background-image: url('/img/vertical-lines.svg');
+        }
+    }
+}
+
+// Давайте знакомиться
+.salute {
+    position: relative;
+    
+    // Блоки с информацией
+    & > .salute-wrapper {
+        position: relative;
+        width: 100%;
+        left: 120px;
+        width: calc(100% - 120px);
+        
+        
+        & > .salute-w-inner {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            
+            & > .salute-wi-block {
+                display: flex;
+                flex-direction: column;
+                width: 45%;
+                height: 400px;
+                
+                & > .salute-wib-img {
+                    position: relative;
+                    align-self: center;
+                    .ccibg();
+                    width: 462px;
+                    height: 300px;
+                    margin-bottom: 15px;
+                    .desktop({
+                        width: 370px;
+                        height: 240px;
+                    });
+                    
+                    & > .salute-wib-img-border {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 4%;
+                        left: 5%;
+                        border: 1px solid #E9E9E9;
+                    }
+                }
+                
+                & > .salute-wib-text {
+                    font-family: mont-l;
+                    color: @blackColor;
+                }
+            }
+            
+            &:nth-child(3) {
+                left: 5%;
+            }
+            &:nth-child(4) {
+                left: 10%;
+            }
+            &:nth-child(5) {
+                left: 15%;
+            }
+        }
+    }
+    
+    // Дизайн
+    & > .salute-design {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        & > .salute-d-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url('/img/salute/original.png');
+        }
+        
+        & > .salute-d-lines {    
+            position: absolute;
+            top: 2.5%;
+            height: 95%;
+            width: 100%;
+            background-image: url('/img/vertical-lines-black.svg');
+        }
+    }
+}
+
+// О себе
+.about {
+    .flex();
+    .ccibg();
+    background-image: url('/img/main-img-6.jpg');
+    
+    & > .about-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(86, 86, 86, .6);
+        
+        & > .about-d-lines {
+            position: absolute;
+            align-self: center;
+            top: 5%;
+            width: 100%;
+            height: 90%;
+            .ccibg();
+            background-image: url('/img/vertical-lines.svg');
+        }
+    }
+    
+    & > .about-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        left: 120px;
+        width: calc(100% - 130px);
+        height: 100%;
+        
+        & > .about-w-info {
+            display: flex;
+            flex-direction: column;
+            height: 90%;
+            
+            & > .name-block {
+                color: @bgColor;
+                padding-left: 0;
+            }
+            
+            // Инфа о себе
+            & > .about-wi-wrapp {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                height: 90%;
+                
+                & > .about-wiw-img {
+                    position: relative;
+                    .ccibg();
+                    background-image: url('/img/stepanov_nikolay_2.jpg');
+                    height: 50%;
+                    width: 70%;
+                    
+                    & > .img-border {
+                        opacity: .7;
+                    }
+                }
+                
+                & > .about-wiw-info {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    & > .about-wiwf-name {
+                        width: 100%;
+                        font-size: 3rem;
+                        color: @bgColor;
+                        margin: 10% 0 10%;
+                    }
+                    
+                    & > .about-wiwf-soc {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        height: 60px;
+                        
+                        & > .about-wiwfs-btn {
+                            .ccibg();
+                            background-size: contain;
+                            width: 30%;
+                            height: 100%;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s;
+                            
+                            &:hover {
+                                transform: scale3d(1.25, 1.25, 1);
+                            }
+                            
+                            &:nth-child(1) {
+                                background-image: url('/img/social/facebook-logo.svg');
+                            }
+                            &:nth-child(2) {
+                                background-image: url('/img/social/vkontakte-logo.svg');
+                            }
+                            &:nth-child(3) {
+                                background-image: url('/img/social/odnoklassniki-logo.svg');
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        & > .about-w-text {
+            height: 90%;
+            width: 65%;
+            color: @bgColor;
+            font-size: .9rem;
+            line-height: 1.4rem;
+        }
+    }
+}
+
+// Как все происходит
+.action {
+    .flex();
+    .ccibg();
+    background-image: url('/img/main-img-7.jpg');
+    
+    & > .action-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(86, 86, 86, .5);
+        
+        & > .action-d-lines {
+            position: absolute;
+            align-self: center;
+            top: 5%;
+            width: 100%;
+            height: 90%;
+            .ccibg();
+            background-image: url('/img/vertical-lines.svg');
+        }
+    }
+    
+    & > .action-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        left: 120px;
+        width: calc(100% - 180px);
+        height: 100%;
+        
+        & > .action-w-left {
+            width: 50%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            
+            & > .name-block {
+                color: @bgColor;
+                padding-left: 0;
+            }
+            
+            & > .action-wl-design {
+                position: relative;
+                width: 100%;
+                height: 20%;
+                
+                &:before, &:after {
+                    content: " ";
+                    position: absolute;
+                    width: 76%;
+                    height: 1px;
+                    background-color: @bgColor;
+                    opacity: .2;
+                }
+                
+                &:after {
+                    width: 47%;
+                    top: 20px;
+                    background-color: @orColor;
+                }
+            }
+            
+            & > .action-wl-text {
+                color: @bgColor;
+                line-height: 1.4rem;
+                
+                & > p {
+                    font-family: mont-l;
+                }
+            }
+        }
+        
+        & > .action-slider {
+            position: relative;
+            width: 45%;
+            height: 50%;
+            .ccibg();
+            background-size: cover;
+            background-image: url('/img/sliders/explanation/1.jpg');
+            
+            .desktop({
+                height: 40%;
+            });
+        }
+    }
+}
+
+// Отзывы
+.reviews {
+    .flex();
+    
+    & > .reviews-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;        
+        
+        & > .reviews-d-lines {
+            position: absolute;
+            top: 2.5%;
+            height: 95%;
+            width: 100%;
+            background-image: url('/img/vertical-lines-black.svg');
+        }
+    }
+    
+    & > .reviews-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: 120px;
+        width: calc(100% - 180px);
+        height: 100%;
+        
+        & > .name-block {
+            padding-left: 0;
+        }
+        
+        & > .reviews-w {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90%;
+            
+            // Кнопки больше отзывов
+            & > .reviews-w-more {
+                position: relative;
+                color: @orColor;
+                text-decoration: none;
+                text-transform: uppercase;
+                
+                &:nth-child(1) {
+                    transform: rotate(270deg);
+                }
+                &:last-child {
+                    transform: rotate(90deg);
+                }
+                
+                & > p {
+                    position: relative;
+                    font-size: 2rem;
+                    font-family: mont-eb;
+                }
+                
+                // Контур
+                & > .reviews-wm-border {
+                    top: -.5rem;
+                    left: -1rem;
+                    position: absolute;
+                    font-family: mont-r;
+                    font-size: 2rem;
+                    text-shadow: 
+                        1px 1px 1px @orColor, 
+                        -1px -1px 1px @orColor, 
+                        1px -1px 1px @orColor,
+                        -1px 1px 1px @orColor;
+                    color: @bgColor;
+                    opacity: .3;
+                }
+                
+                // Линии и прочее
+                & > .reviews-wm-design {
+                    position: absolute;
+                    width: 130%;
+                    height: 4rem;
+                    top: -1rem;
+                    left: -2rem;
+                    .ccibg();
+                    background-image: url('/img/vertical-lines-black-opacity.svg');
+                    opacity: .4;
+                    
+                    &:before, &:after {
+                        content: " ";
+                        position: absolute;
+                        height: 1px;
+                        width: 100%;
+                        bottom: -5px;
+                        background-color: @orColor;
+                        opacity: .2;
+                    }
+                    
+                    &:after {
+                        bottom: -10px;
+                        width: 87%;
+                        background-color: @blackColor;
+                    }
+                }
+            }
+            
+            // Здесь таблички отзывы
+            & > .reviews-w-rev {
+                position: relative;
+                height: 90%;
+                
+                // Табличка
+                & > .reviews-wr-review {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: absolute;
+                    width: 23vw;
+                    height: 60%;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+                    background-color: @bgColor;
+                    
+                    & > .reviews-wrr-name {
+                        font-family: mont-b;
+                        font-size: 1.3rem;
+                        margin-bottom: 3%;
+                        padding: 10px;
+                    }
+                    
+                    & > .reviews-wrr-text {
+                        font-family: mont-l;
+                        font-size: .8rem;
+                        padding: 10px 20px;
+                    }
+                    
+                    // Низ карточки, где компас
+                    & > .reviews-wrr-wrapper {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 25%;
+                        
+                        // Дата и город
+                        & > .reviews-wrrb-top {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-end;
+                            justify-content: center;
+                            text-align: right;
+                            width: 100%;
+                            height: 50%;
+                            padding-right: 5%;
+                            font-size: .9rem;
+                            
+                            & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
+                                position: relative;
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                width: 50%;
+                                height: 50%;
+                                font-family: mont-l;
+                                padding-right: 25px;
+                                
+                                &:after {
+                                    content: " ";
+                                    top: 0;
+                                    right: 0;
+                                    width: 20px;
+                                    height: 20px;
+                                    position: absolute;
+                                    background-position: center;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-image: url('/img/icons/calendar.svg');
+                                }
+                            }
+                            
+                            & > .reviews-wrrbt-city {
+                                &:after {
+                                    background-image: url('/img/icons/building.svg');
+                                }
+                            }
+                            
+                        }
+                        
+                        // Здесь кнопка подробнее
+                        & > .reviews-wrrb-bottom {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            width: 100%;
+                            height: 50%;
+                            background-color: @orColor;
+                            
+                            & > .reviews-wrrbb-btn {
+                                width: 50%;
+                                font-family: mont-b;
+                                font-size: 1rem;
+                                text-transform: uppercase;
+                                text-decoration: none;
+                                text-align: center;
+                                color: @bgColor;
+                            }
+                        }
+                        
+                        // Компас
+                        & > .reviews-wrrb-compass {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            width: 11vh;
+                            height: 11vh;
+                            left: 3vh;
+                            
+                            //Кружки в компасе
+                            & > .reviews-wrrbc-circle {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background-color: transparent;
+                                border: 1px solid @orColor;
+                                border-radius: 100%;
+                                
+                                &:nth-child(1) {
+                                    background-color: @bgColor;
+                                }
+                                
+                                &:nth-child(2) {
+                                    width: 90%;
+                                    height: 90%;
+                                    border: 1px solid rgba(0,0,0,.3);
+                                    animation: compass-circle_2 12s linear infinite;
+                                }
+                                
+                                &:nth-child(3) {
+                                    width: 70%;
+                                    height: 70%;
+                                    border: 1px solid @orColor;
+                                }
+                                
+                                &:nth-child(4) {
+                                    width: 30%;
+                                    height: 30%;
+                                    border: 1px solid rgba(0,0,0,.3);
+                                    animation: compass-circle_1 5s linear infinite;
+                                }
+                                
+                                &:nth-child(5) {
+                                    width: 20%;
+                                    height: 20%;
+                                    border: 1px solid @orColor;
+                                }
+                            }
+                            
+                            // Стрелка
+                            & > .reviews-wrrbc-arrow {
+                                position: absolute;
+                                width: 70%;
+                                height: 15%;
+                                opacity: .6;
+                                right: 40%;
+                                .ccibg();
+                                background-size: contain;
+                                background-image: url('/img/arrow-black.svg');
+                                transform-origin: 86% 50%;
+                                animation: compass-circle_arrow 15s ease-in-out infinite;
+                            }
+                            
+                            // Буквы
+                            & > .reviews-wrrbc-word {
+                                position: absolute;
+                                font-size: .7rem;
+                                opacity: .5;
+                                
+                                &:nth-last-child(1) {
+                                    right: -1rem;
+                                    top: 40%;
+                                }
+                                &:nth-last-child(2) {
+                                    top: -1.1rem;
+                                }
+                                &:nth-last-child(3) {
+                                    left: -1.2rem;
+                                    top: 40%;
+                                }
+                            }
+                        }
+                    }
+                    
+                    &:nth-child(1) {
+                        z-index: 2;
+                        transform: translate3d(-140%, 35%, 0);
+                    }
+                    
+                    &:nth-child(2) {
+                        z-index: 4;
+                        transform: translate3d(-50%, 0, 0);
+                        width: 35vw;
+                        height: 90%;
+                        
+                        & > .reviews-wrr-name {
+                            font-size: 2rem;
+                        }
+                        
+                        & > .reviews-wrr-text {
+                            font-size: 1.3rem;
+                        }
+                        
+                        & > .reviews-wrr-wrapper {
+                            
+                            & > .reviews-wrrb-top {
+                                font-size: 1.5rem;
+
+                                & > .reviews-wrrbt-date, & > .reviews-wrrbt-city {
+                                    padding-right: 45px;
+
+                                    &:after {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+                                }
+                            }
+                            
+                            & > .reviews-wrrb-bottom > .reviews-wrrbb-btn {
+                                font-size: 1.5rem;
+                            }
+                            
+                            & > .reviews-wrrb-compass {
+                                position: absolute;
+                                width: 16vh;
+                                height: 16vh;
+                                
+                                & > .reviews-wrrbc-word {
+                                    font-size: 1rem;
+                                    
+                                    &:nth-last-child(1) {
+                                        right: -1rem;
+                                    }
+                                    &:nth-last-child(2) {
+                                        top: -1.1rem;
+                                    }
+                                    &:nth-last-child(3) {
+                                        left: -1.2rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    &:nth-child(3) {
+                        z-index: 2;
+                        transform: translate3d(40%, 35%, 0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Заметки о Черногории
+.notes {
+    .flex();
+    .ccibg();
+    background-image: url('/img/main-img-4.jpg');
+    
+    & > .notes-design {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(86, 86, 86, .5);
+        
+        & > .notes-d-lines {
+            position: absolute;
+            align-self: center;
+            top: 5%;
+            width: 100%;
+            height: 90%;
+            .ccibg();
+            background-image: url('/img/vertical-lines.svg');
+        }
+    }
+    
+    & > .notes-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: 120px;
+        width: calc(100% - 180px);
+        height: 100%;
+        
+        & > .name-block {
+            color: @bgColor;
+            padding-left: 0;
+        }
+        
+        & > .notes-w {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90%;
+            
+            // Блок с заметкой
+            & > .notes-w-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 40%;
+                height: 80%;
+                background-color: @bgColor;
+                
+                // Название
+                & > .notes-wb-name {
+                    font-family: mont-b;
+                    padding: 10px;
+                    font-size: 1.7rem;
+                }
+                
+                & > .notes-wb-info {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 35%;
+                    padding: 0 0 0 15px;
+                    
+                    & > .notes-wbi-img {
+                        position: relative;
+                        width: 60%;
+                        height: 100%;
+                        .ccibg();
+                        background-image: url('/img/notes/1.jpg');
+                        
+                        .desktop({
+                            width: 80%;
+                            height: 100%; 
+                        });
+                    }
+                    
+                    & > .notes-wbi-date {
+                        position: relative;
+                        transform: rotate(90deg);
+                        font-size: 1.3rem;
+                        font-family: mont-l;
+                        padding-left: 42px;
+                        
+                        &:before {
+                            content: " ";
+                            position: absolute;
+                            top: -5px;
+                            left: 0;
+                            width: 30px;
+                            height: 30px;
+                            .ccibg();
+                            background-image: url('/img/icons/calendar.svg');
+                        }
+                    }
+                }
+                
+                & > .notes-wb-text {
+                    padding: 15px;
+                }
+                
+                & > .notes-wb-bottom {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 12%;
+                    background-color: @orColor;
+                    
+                    & > .notes-wbb-btn {
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        color: @bgColor;
+                        font-family: mont-b;
+                        font-size: 1.3rem;
+                    }
+                }
+                
+                &:nth-child(2) {
+                    width: 35%;
+                    height: 70%;
+                    
+                    & > .notes-wb-name {
+                        font-size: 1.5rem;
+                    }
+                    
+                    & > .notes-wb-info {
+                        & > .notes-wbi-date {
+                            font-size: 1.1rem;
+                        }
+                    }
+                    
+                    & > .notes-wb-text {
+                        font-size: .9rem;
+                    }
+                    
+                    & > .notes-wb-bottom {
+                        & > .notes-wbb-btn {
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+            
+            // Больше заметок (кнопка)
+            & > .notes-w-btn {
+                position: relative;
+                color: @bgColor;
+                text-decoration: none;
+                text-transform: uppercase;
+                width: 10%;
+                
+                // Кнопки больше отзывов
+                &:last-child {
+                    position: absolute;
+                    width: auto;
+                    transform: rotate(90deg);
+                    right: -10%;
+                }
+
+                & > p {
+                    position: relative;
+                    font-size: 3rem;
+                    font-family: mont-eb;
+                    
+                    .desktop({
+                       font-size: 1.8rem; 
+                    });
+                }
+
+                // Контур
+                & > .notes-wm-border {
+                    top: -.5rem;
+                    left: -1rem;
+                    position: absolute;
+                    font-family: mont-eb;
+                    font-size: 3rem;
+                    -webkit-text-stroke: 1px @bgColor;
+                    color: transparent;
+                    opacity: .3;
+                    
+                    .desktop({
+                       font-size: 1.8rem; 
+                    });
+                }
+
+                // Линии и прочее
+                & > .notes-wm-design {
+                    position: absolute;
+                    width: 130%;
+                    height: 4rem;
+                    top: -1rem;
+                    left: -2rem;
+                    .ccibg();
+                    background-image: url('/img/vertical-lines-opacity.svg');
+                    opacity: 1;
+
+                    &:before, &:after {
+                        content: " ";
+                        position: absolute;
+                        height: 1px;
+                        width: 100%;
+                        bottom: -5px;
+                        background-color: @bgColor;
+                        opacity: .2;
+                    }
+
+                    &:after {
+                        bottom: -10px;
+                        width: 87%;
+                        background-color: @bgColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Подвал
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5%;
+    width: 100%;
+    
+    // Дизайн
+    .footer-design {
+        position: absolute;
+        top: -5%;
+        width: 90%;
+        height: 95%;
+        background-image: url('/img/cross.png');
+    }
+    
+    // Верхняя часть footer
+    .footer-sitemap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 15px 0 40px;
+        background-color: @orColor;
+        z-index: 2;
+        
+        .footer-sitemap-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            
+            .footer-sitemap-w-wrapper {
+                display: flex;
+                justify-content: center;
+                width: 50%;
+                
+                .footer-s-block {
+                    display: flex;
+                    flex-direction: column;
+                    color: @bgColor;
+                    width: 50%;
+
+                    // Заголовок
+                    .footer-s-b-name {
+                        font-size: 2.2rem;
+                        font-family: mont-b;
+                        margin-bottom: 20px;
+                    }
+
+                    // Ссылки
+                    a {
+                        position: relative;
+                        text-decoration: none;
+                        color: @bgColor;
+                        margin-bottom: .6rem;
+                        font-size: 1.2rem;
+                        padding-bottom: 3px;
+                        overflow: hidden;
+                        padding-left: 2%;
+                        overflow: hidden;
+                            
+                        &:after, &:before {
+                            content: " ";
+                            position: absolute;
+                            width: 80%;
+                            height: 1px;
+                            background-color: @bgColor;
+                            transition: transform .3s, background-color .3s;
+                            left: 0;
+                        }
+                        
+                        &:after {
+                            transform: translate3d(-80%, 0, 0);
+                            bottom: 0;
+                        }
+                        
+                        &:before {
+                            transform: translate3d(101%, 0, 0);
+                            background-color: @orColor;
+                        }
+                        
+                        &:hover {
+                            &:after, &:before {
+                                transform: translate3d(0, 0, 0);
+                                background-color: @bgColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Надпись в добрый путь
+        .footer-togoodway {
+            position: relative;
+            color: @bgColor;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 10%;
+            z-index: 3;
+                
+            // Кнопки больше отзывов
+            &:last-child {
+                position: absolute;
+                width: auto;
+                transform: rotate(90deg);
+                right: -1%;
+            }
+
+            & > p {
+                position: relative;
+                font-size: 1rem;
+                font-family: mont-eb;
+                    
+                .desktop({
+                   font-size: 1rem; 
+                });
+            }
+
+            // Контур
+            & > .footer-t-border {
+                top: -.25rem;
+                left: -.5rem;
+                position: absolute;
+                font-family: mont-eb;
+                font-size: 1rem;
+                -webkit-text-stroke: 1px @bgColor;
+                color: transparent;
+                opacity: .2;
+                
+                .desktop({
+                   font-size: 1rem; 
+                });
+            }
+
+            // Линии и прочее
+            & > .footer-t-design {
+                position: absolute;
+                width: 130%;
+                height: 2rem;
+                top: -.5rem;
+                left: -1rem;
+                .ccibg();
+                background-image: url('/img/vertical-lines-opacity.svg');
+                opacity: 1;
+
+                &:before, &:after {
+                    content: " ";
+                    position: absolute;
+                    height: 1px;
+                    width: 100%;
+                    bottom: -2px;
+                    background-color: @bgColor;
+                    opacity: .2;
+                }
+
+                &:after {
+                    bottom: -5px;
+                    width: 87%;
+                    background-color: @bgColor;
+                }
+            }
+        }
+    }
+    
+    // Нижняя часть footer
+    .footer-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 78%;
+        padding: 40px 0 25px;
+        z-index: 2;
+        
+        // Соц. сети
+        .footer-i-soc {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            .footer-soc-btn {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 25px;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                transform: scale3d(1,1,1);
+                transition: transform .2s;
+                
+                &:hover {
+                    transform: scale3d(1.25,1.25,1);
+                }
+            }
+        }
+        
+        // Связь
+        .footer-i-soc-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            
+            p {
+                font-size: 2rem;
+                font-family: mont-l;
+                font-weight: 100;
+            }
+            
+            p:last-child {
+                margin-top: 3rem;
+            }
+        }
+    }
+    
+    // Года
+    .footer-years {
+        position: relative;
+        width: 80%;
+        border-top: 2px solid rgba(0,0,0,.15);
+        padding: 10px 0;
+        text-align: center;
+        font-size: 2rem;
+        font-family: mont-l;
+        font-weight: 100;
+        z-index: 2;
+    }
+}
+
+// Анимации
+@keyframes compass-circle_ride {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes compass-circle_1 {
+    0% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.1);
+    }
+    30% {
+        transform: scale(1.05);
+    }
+    45% {
+        transform: scale(1.08);
+    }
+    75% {
+        transform: scale(1.03);
+    }
+    75% {
+        transform: scale(1.04);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes compass-circle_2 {
+    0% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(.95);
+    }
+    30% {
+        transform: scale(1.08);
+    }
+    45% {
+        transform: scale(1.01);
+    }
+    75% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.04);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes compass-circle_arrow {
+    0% {
+        transform: rotate(80deg);
+    }
+    10% {
+        transform: rotate(85deg);
+    }
+    20% {
+        transform: rotate(80deg);
+    }
+    30% {
+        transform: rotate(70deg);
+    }
+    40% {
+        transform: rotate(75deg);
+    }
+    50% {
+        transform: rotate(65deg);
+    }
+    60% {
+        transform: rotate(55deg);
+    }
+    70% {
+        transform: rotate(50deg);
+    }
+    80% {
+        transform: rotate(55deg);
+    }
+    90% {
+        transform: rotate(70deg);
+    }
+    100% {
+        transform: rotate(80deg);
+    }
+}
