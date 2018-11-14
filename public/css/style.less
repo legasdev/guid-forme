@@ -10,10 +10,20 @@
 
 // Заголовки
 .name-block {
-    padding: 35px 0 35px 35px;
+    padding: 0 0 35px 35px;
+    margin-top: 35px;
     font-family: mont-b;
     font-size: 2.3rem;
     text-transform: uppercase;
+    
+    & > span {
+        font-family: mont-b;
+    }
+    
+    & > span:last-child {
+        position: relative;
+        color: transparent;
+    }
 }
 
 // Границы для картинки

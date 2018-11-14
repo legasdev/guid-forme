@@ -23,12 +23,10 @@ $(document).ready( () => {
     // Устанавливаем текущий блок
     setCurrentBlock();
     
+    $(allBlocks[currentBlock]).removeClass('hidden');
     
     // Прокуртка мыши
     addWheelEvent();
-    
-    // Показываем первый экран
-    $('.main').removeClass('hidden');
 
     // Для компоса при наведении
     $('body').on('mouseenter', '.compass-link', (e) => {
@@ -118,6 +116,10 @@ onWheel = (e) => {
     
         // Полная прокрутка
         if (currentBlock !== 1) {
+            
+            //!$(allBlocks[currentBlock]).hasClass('hidden') ? 
+            //        $(allBlocks[currentBlock]).addClass('hidden') : false;
+            
             if (delta > 0 && currentBlock < allBlocks.length - 1)
                 currentBlock++;
             else if (delta < 0 && currentBlock > 0)
@@ -127,8 +129,10 @@ onWheel = (e) => {
 
             $('html, body').stop().animate({
                 scrollTop: $(allBlocks[currentBlock]).offset().top
-            }, 500, () => {
+            }, 1000, () => {
                 checkScroll = true;
+                $(allBlocks[currentBlock]).hasClass('hidden') ? 
+                    $(allBlocks[currentBlock]).removeClass('hidden') : false;
             });
             e.preventDefault ? e.preventDefault() : (e.returnValue = false);
         }
@@ -148,11 +152,13 @@ scrollSecondBlock = (e) => {
                 scrollTop: $(allBlocks[currentBlock]).offset().top
             }, 500, () => {
                 checkScroll = true;
+                $(allBlocks[currentBlock]).hasClass('hidden') ? 
+                    $(allBlocks[currentBlock]).removeClass('hidden') : false;
             });
                 
             e.preventDefault ? e.preventDefault() : (e.returnValue = false);
         } else if (
-            $(window).scrollTop() + $(window).height() > 
+            $(window).scrollTop() + $(window).height() * 0.9 > 
                 $(allBlocks[currentBlock+1]).offset().top && checkScroll) {
             
             checkScroll = false;
@@ -162,6 +168,8 @@ scrollSecondBlock = (e) => {
                 scrollTop: $(allBlocks[currentBlock]).offset().top
             }, 500, () => {
                 checkScroll = true;
+                $(allBlocks[currentBlock]).hasClass('hidden') ? 
+                    $(allBlocks[currentBlock]).removeClass('hidden') : false;
             });
                 
             e.preventDefault ? e.preventDefault() : (e.returnValue = false);
