@@ -35,10 +35,31 @@
                 width: 120px;
                 height: 50vh;
                 font-size: 1.5rem;
+                opacity: 1;
                 color: @bgColor;
                 
+                // Языки
                 & > .main-l-lang {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
                     font-family: mont-l;
+                    transition: opacity .2s;
+                    overflow-y: hidden;
+                    
+                    & > span {
+                        position: absolute;
+                        cursor: pointer;
+                        right: 60%;
+                        transform: translate3d(0, 0, 0);
+                        transition: transform .2s ease .1s;
+                        &:last-child {
+                            left: 60%;
+                            transition: transform .2s ease .3s;
+                        }
+                    }
                     
                     & > .chose {
                         color: @orColor;
@@ -62,40 +83,71 @@
                     // Заголовок
                     & > .main-c-info-h {
                         position: absolute;
+                        height: 4em;
+                        width: 500px;
                         bottom: 25%;
-                        left: 1.3rem;
                         color: @bgColor;
                         font-family: mont-l;
                         font-weight: 100;
                         font-size: 1.3rem;
                         text-transform: uppercase;
+                        overflow: hidden;
+                        opacity: 1;
+                        transition: opacity .2s ease .2s;
+                        
+                        & > span {
+                            position: absolute;
+                            left: 1rem;
+                            top: .5rem;
+                            transform: translate3d(0, 0, 0);
+                            transition: transform .2s ease .6s;
+                        }
                         
                         & > div {
+                            position: absolute;
                             font-family: mont-l;
                             font-weight: 100;
-                            font-size: 2em;
+                            left: 2rem;
+                            font-size: 3rem;
+                            bottom: 0;
+                            transform: translate3d(0, 0, 0);
+                            transition: transform .2s ease .6s;
                         }
                         
                         &:after {
                             content: " ";
                             position: absolute;
+                            bottom: 0;
                             left: -1.3rem;
-                            width: 90%;
+                            width: 70%;
                             height: 1px;
                             background-color: @bgColor;
+                            transform-origin: left;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s ease .4s;
                         }
                     }
                     
                     // Телефон и почта
                     & > .main-c-i-info {
                         position: absolute;
+                        width: 500px;
+                        height: 100px;
                         top: 15%;
                         left: 1.3rem;
                         color: @bgColor;                       
                         font-size: 1.3rem;
+                        overflow: hidden;
                         
                         & > p {
-                            font-family: mont-l; 
+                            position: absolute;
+                            font-family: mont-l;
+                            transform: translate3d(0, 0, 0);
+                            transition: transform .2s ease .5s;
+                            &:last-child {
+                                top: 1.5rem;
+                                transition: transform .2s ease .3s;
+                            }
                         }
                     }
                     
@@ -106,6 +158,9 @@
                         width: 1px;
                         height: 100%;
                         background-color: @bgColor;
+                        transform-origin: top;
+                        transform: scale3d(1, 1, 1);
+                        transition: transform .2s ease .1s;
                     }
                 }
                 
@@ -134,6 +189,7 @@
                             width: 100%;
                             height: 100%;
                             border: 1px solid @orColor;
+                            transition: opacity .2s ease .6s;
                             animation: compass-circle_1 12s ease-in-out infinite;
                         } 
                         
@@ -141,6 +197,7 @@
                             width: 60%;
                             height: 60%;
                             border: 1px solid @orColor;
+                            transition: opacity .2s ease .7s;
                             animation: compass-circle_2 15s ease-in-out infinite;
                         }
                         
@@ -149,6 +206,8 @@
                             height: 100%;
                             border-radius: 0;
                             opacity: 1;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s ease .8s;
                             .ccibg();
                             background-image: url('/img/compass-1.svg');
                         }
@@ -157,18 +216,24 @@
                             width: 40%;
                             height: 40%;
                             border: 1px solid @bgColor;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s ease .9s;
                         }
                         
                         & > .main-c-c-circle:nth-child(5) {
                             width: 10%;
                             height: 10%;
                             border: 1px solid @orColor;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s ease 1s;
                         }
                         
                         & > .main-c-c-circle:nth-child(6) {
                             width: 4%;
                             height: 4%;
                             border: 1px solid @bgColor;
+                            transform: scale3d(1, 1, 1);
+                            transition: transform .2s ease 1.1s;
                         }
                         
                         & > .main-c-c-circle_inner {
@@ -176,6 +241,8 @@
                             width: 45%;
                             height: 45%;
                             .ccibg();
+                            opacity: 1;
+                            transition: opacity .4s ease 1.2s;
                             background-image: url('/img/compass.svg');
                             animation: compass-circle_ride 60s linear infinite;
                         }
@@ -184,6 +251,9 @@
                             position: absolute;
                             width: 35%;
                             height: 35%;
+                            transform: scale3d(1, 1, 1);
+                            opacity: 1;
+                            transition: opacity .4s ease 1.3s;
                             .ccibg();
                             background-image: url('/img/compass.svg');
                             animation: compass-circle_ride 120s linear reverse infinite;
@@ -201,7 +271,7 @@
                         background-size: contain;
                         background-image: url('/img/arrow.svg');
                         transform-origin: 83% 50%;
-                        transition: transform .5s ease-in-out;
+                        transition: transform .5s ease-in-out, opacity .2s ease 1.2s;
                     }
                     
                     // Надписи
@@ -218,6 +288,7 @@
                             font-family: mont-sb;
                             font-size: 1.7vh;
                             overflow: hidden;
+                            opacity: 1;
                             
                             &:after, &:before {
                                 content: " ";
@@ -249,21 +320,25 @@
                         & > a:nth-child(1) {
                             left: -25%;
                             top: 10%;
+                            transition: opacity .2s ease 1.1s;
                         }
                         
                         & > a:nth-child(2) {
                             left: -33%;
                             top: 48.5%;
+                            transition: opacity .2s ease 1.2s;
                         }
                         
                         & > a:nth-child(3) {
                             left: -25%;
                             bottom: 10%;
+                            transition: opacity .2s ease 1.3s;
                         }
                         
                         & > a:nth-child(4) {
                             bottom: -5%;
                             left: 30%;
+                            transition: opacity .2s ease 1.4s;
                         }
                     }
                 }
@@ -278,6 +353,71 @@
             height: 90%;
             .ccibg();
             background-image: url('/img/vertical-lines.svg');
+        }
+    }
+    
+    // Если все скрыто
+    &.hidden {
+        & > .main-shadow {
+            & > .main-s-info {
+                & > .main-left {
+                    // Выбор языка
+                    & > .main-l-lang {
+                        opacity: 0;
+                        & > span {
+                            transform: translate3d(0, -2rem, 0);
+                        }
+                    }
+                }
+                & > .main-center {
+                    // Информация
+                    & > .main-c-info {
+                        // Заголовок
+                        & > .main-c-info-h {
+                            opacity: 0;
+                            & > span {
+                                transform: translate3d(0, -4rem, 0);
+                            }
+                            & > div {
+                                transform: translate3d(0, 4rem, 0);
+                            }
+                            &:after {
+                                transform: scale3d(0, 1, 1);
+                            }
+                        }
+                        // Телефон и почта
+                        & > .main-c-i-info {
+                            & > p {
+                                transform: translate3d(0, -4rem, 0);
+                            }
+                        }
+                        // Левая граница
+                        &:after {
+                            transform: scale3d(1, 0, 1);
+                        }
+                    }
+                    // Компасс
+                    & > .main-c-compass {
+                        & > .main-c-circles {
+                            & > .main-c-c-circle {
+                                transform: scale3d(0, 0, 0);
+                                opacity: 0;
+                            }
+                            & > .main-c-c-circle_inner, & > .main-c-c-circle_inner_2 {
+                                opacity: 0;
+                            }
+                        }
+                        & > .main-c-arrow {
+                            opacity: 0;
+                        }
+                        & > .main-c-labels {
+                            & > a {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -1,24 +1,35 @@
 'use strict'
 
+
+
 var
+    allBlocks, // Основные блоки
     hoverCompassLink, // направление стрелки компаса
     addWheelEvent, // добавить функцию при прокрутке мыши
     removeWheelEvent, // Удалить отслеживание прокрутки
     onWheel, // событие при прокрутке колесика
     currentBlock, // Текущий блок
     checkScroll, // Возможен ли скроллинг
-    setCurrentBlock; // Установка текущего блока
+    setCurrentBlock, // Установка текущего блока
+    scrollSecondBlock; // Прокрутка во втором блоке
 
-$(document).ready( () => {   
+
+
+$(document).ready( () => {
     checkScroll = true;
     currentBlock = 0;
+    allBlocks = $('#body').children('.main, section, footer');
     
     // Устанавливаем текущий блок
     setCurrentBlock();
     
+    
     // Прокуртка мыши
     addWheelEvent();
     
+    // Показываем первый экран
+    $('.main').removeClass('hidden');
+
     // Для компоса при наведении
     $('body').on('mouseenter', '.compass-link', (e) => {
         hoverCompassLink(e);
@@ -29,6 +40,15 @@ $(document).ready( () => {
     
     
 });
+
+$(window).scroll( (e) => {
+    
+    // Прокрутка во втором блоке
+    scrollSecondBlock(e);
+    
+});
+
+
 
 // Направление стрелки
 hoverCompassLink = (e) => {
@@ -95,9 +115,6 @@ onWheel = (e) => {
         delta = e.deltaY || e.detail || e.wheelDelta;
     
     if (checkScroll) {
-        
-        let
-            allBlocks = $('#body').children('.main, section, footer');
     
         // Полная прокрутка
         if (currentBlock !== 1) {
@@ -114,38 +131,42 @@ onWheel = (e) => {
                 checkScroll = true;
             });
             e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-        } else {
-            
-            // Проверяем, ушли ли выше
-            if ( $(window).scrollTop() <= $(allBlocks[currentBlock]).offset().top &&
-                    delta < 0) {
-                
-                currentBlock--;
-                $('html, body').stop().animate({
-                    scrollTop: $(allBlocks[currentBlock]).offset().top
-                }, 500, () => {
-                    checkScroll = true;
-                });
-                
-                e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-            } else if (
-                $(window).scrollTop() + $(window).height() >= 
-                    $(allBlocks[currentBlock+1]).offset().top &&
-                    delta > 0) {
-                
-                // Или ушел ниже
-                currentBlock++;
-                $('html, body').stop().animate({
-                    scrollTop: $(allBlocks[currentBlock]).offset().top
-                }, 500, () => {
-                    checkScroll = true;
-                });
-                
-                e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-            }
-            
         }
     } 
+}
+
+// Прокрутка во втором блоке
+scrollSecondBlock = (e) => {
+    // Обычная прокрутка во втором блоке
+    if (currentBlock === 1 && checkScroll) {
+        // Проверяем, ушли ли выше
+        if ( $(window).scrollTop() < $(allBlocks[currentBlock]).offset().top) {
+            
+            checkScroll = false;
+            currentBlock--;
+            $('html, body').stop().animate({
+                scrollTop: $(allBlocks[currentBlock]).offset().top
+            }, 500, () => {
+                checkScroll = true;
+            });
+                
+            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+        } else if (
+            $(window).scrollTop() + $(window).height() > 
+                $(allBlocks[currentBlock+1]).offset().top && checkScroll) {
+            
+            checkScroll = false;
+            // Или ушел ниже
+            currentBlock++;
+            $('html, body').stop().animate({
+                scrollTop: $(allBlocks[currentBlock]).offset().top
+            }, 500, () => {
+                checkScroll = true;
+            });
+                
+            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+        }
+    }
 }
 
 // Определить текущий блок
