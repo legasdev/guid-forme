@@ -53,6 +53,16 @@ app.get('/contacts', (req, res) => {
 	res.render('contacts.hbs', data);
 });
 
+app.get('/pop_excurs', (req, res) => res.render('popular_excursions.hbs'));
+app.get('/special_turs', (req, res) => res.render('special_turs.hbs'));
+app.get('/next_trips', (req, res) => res.render('next_trips.hbs'));
+app.get('/vine&adr', (req, res) => res.render('vine&adr.hbs'));
+app.get('/feedbacks', (req, res) => res.render('feedbacks.hbs'));
+app.get('/more_notes', (req, res) => res.render('more_notes.hbs'));
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', (req, res) => res.render('404error.hbs'));
+
 hbs.registerHelper('getDate', () => {
 	
 	let myDate = new Date();
@@ -71,7 +81,7 @@ hbs.registerHelper('getDate', () => {
 });
 
 hbs.registerHelper('getList', (list) => {
-	
+
 	let str = '';
 	list.forEach( (e) => {
 		str += `<li>${e}</li>`;
